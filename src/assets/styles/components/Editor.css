@@ -1,0 +1,24 @@
+@tailwind components;
+
+@layer components {
+  .custom-markdown-body {
+    @apply mt-9 w-full flex-1;
+
+    .bytemd {
+      height: 100%;
+    }
+
+    .markdown-body {
+      @apply prose w-0 flex-1 text-base leading-relaxed;
+      max-width: unset;
+
+      p {
+        overflow: auto;
+      }
+    }
+
+    .markdown-body > *:first-child {
+      @apply mt-0;
+    }
+  }
+}

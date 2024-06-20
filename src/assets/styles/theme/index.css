@@ -1,0 +1,21 @@
+@tailwind base;
+@import "./white.css";
+
+@layer base {
+  /* ---------------颜色合集--------------- */
+  .q-color-primary {
+    color: var(--primary-color);
+  }
+
+  .q-color-primary-hover:hover {
+    color: var(--primary-color);
+  }
+
+  .q-bg {
+    background-color: var(--bg-color);
+  }
+
+  .q-secondary {
+    color: var(--text-color-secondary);
+  }
+}

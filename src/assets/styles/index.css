@@ -1,0 +1,14 @@
+/* 皮肤样式 */
+@import "./theme/index.css";
+
+/* base默认样式 */
+@import "./base.css";
+
+/* 动画样式 */
+@import "./animation.css";
+
+/* 组件样式 */
+@import "./components/index.css";
+
+/* 首页样式 */
+@import "./page/index.css";

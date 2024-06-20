@@ -1,0 +1,33 @@
+@tailwind components;
+
+@layer components {
+  .q-input {
+    @apply inline-block rounded-md border px-4 py-2;
+    background-color: var(--bg-color-cpt);
+  }
+
+  .q-input:hover {
+    @apply shadow-md;
+    border-color: var(--primary-color);
+  }
+
+  .q-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 2px var(--primary-color);
+  }
+
+  .q-input:-internal-autofill-selected {
+    box-shadow: inset 0 0 0 1000px var(--bg-color-cpt) !important;
+  }
+
+  /* 只有底部border */
+  .input-border-b {
+    @apply rounded-none border-0 border-b outline-none !important;
+  }
+
+  /* 没有border和其他样式 */
+  .input-border-none {
+    @apply border-none shadow-none outline-none hover:shadow-none !important;
+  }
+}

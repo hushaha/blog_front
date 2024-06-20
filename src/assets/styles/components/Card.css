@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+  .q-card {
+    @apply rounded-lg bg-white px-10 py-6 shadow-md;
+  }
+}

@@ -1,0 +1,18 @@
+@tailwind components;
+
+@layer components {
+  .q-button {
+    @apply rounded-md border px-5 py-2 text-base font-medium;
+    @apply hover:shadow-md;
+    border-color: var(--primary-color);
+    color: var(--text-color-main);
+  }
+
+  .q-button + .q-button {
+    @apply ml-3;
+  }
+
+  .q-button:active {
+    transform: translateY(1px);
+  }
+}

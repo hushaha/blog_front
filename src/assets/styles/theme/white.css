@@ -1,0 +1,14 @@
+:root {
+  /* 背景色 */
+  --bg-color: rgb(243 244 246);
+  /* 主色 */
+  --primary-color: #a855f7;
+  /* 文字主色 */
+  --text-color-main: #333333;
+  /* 文字辅助色 */
+  --text-color-secondary: rgb(115 115 115);
+  /* 边框色 */
+  --border-color: #e0e0e0;
+  /* 边框色 */
+  --bg-color-cpt: #fff;
+}

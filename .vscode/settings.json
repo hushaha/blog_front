@@ -1,0 +1,7 @@
+// .vscode/settings.json
+{
+  "css.customData": [".vscode/tailwindcss.json"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}

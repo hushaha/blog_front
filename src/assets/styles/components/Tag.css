@@ -1,0 +1,9 @@
+@tailwind components;
+
+@layer components {
+  .q-tag {
+    @apply rounded-sm border px-2 py-1 text-xs hover:shadow-md;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
