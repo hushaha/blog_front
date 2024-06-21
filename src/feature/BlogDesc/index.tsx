@@ -16,18 +16,18 @@ const BlogDesc: FC<Props> = ({ item }) => {
         <span className="q-secondary font-light">{item.createTime}</span>
       </div>
       <Link href="/blog/[id]" as={`/blog/${item.id}`} passHref>
-        <a className="mt-2 inline-block text-2xl font-bold hover:underline">
+        <a className="mt-2 inline-block text-xl font-bold hover:underline sm:text-2xl">
           {item.title}
         </a>
       </Link>
       <div className="q-secondary mt-2 line-clamp-2 text-sm">{item.desc}</div>
       <div className="mt-4 flex items-center justify-between">
         <Link href="/blog/[id]" as={`/blog/${item.id}`} passHref>
-          <a className="q-color-primary inline-block hover:underline">
+          <a className="q-color-primary inline-block flex-shrink-0 hover:underline">
             查看详情
           </a>
         </Link>
-        <div className="mt-2 flex flex-wrap gap-2">
+        <div className="hidden gap-2 sm:flex">
           {tags.map((itm) => (
             <div key={itm}>
               <Link href={`/tags/${itm}`} passHref>

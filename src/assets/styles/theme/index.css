@@ -15,7 +15,15 @@
     background-color: var(--bg-color);
   }
 
+  .q-bg-cpt {
+    background-color: var(--bg-color-cpt);
+  }
+
   .q-secondary {
     color: var(--text-color-secondary);
+  }
+
+  .q-mask-bg {
+    background-color: var(--mask-bg-color);
   }
 }

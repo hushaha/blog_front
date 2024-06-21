@@ -13,13 +13,11 @@ interface Props {
 const BlogList: FC<Props> = ({ title, list, onSearch }) => {
   return (
     <Content title={title} onSearch={onSearch}>
-      <ul className="mt-6 flex flex-col gap-6">
+      <div className="mt-6 flex flex-col gap-6">
         {(list || []).map((itm) => (
-          <li key={itm.id}>
-            <BlogDesc item={itm} />
-          </li>
+          <BlogDesc key={itm.id} item={itm} />
         ))}
-      </ul>
+      </div>
     </Content>
   );
 };

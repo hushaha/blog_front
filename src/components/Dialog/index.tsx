@@ -20,7 +20,7 @@ const Dialog: FC<DialogProps> = ({ visabled, title, children }) => {
       <div className="q-bg mx-auto max-w-md rounded p-4 shadow-md">
         <h2 className="mb-6 flex items-center justify-between text-xl font-bold">
           <span>{title}</span>
-          <span
+          <button
             className="q-color-primary-hover icon-[material-symbols--close] cursor-pointer"
             onClick={onClose}
           />

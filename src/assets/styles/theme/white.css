@@ -9,6 +9,8 @@
   --text-color-secondary: rgb(115 115 115);
   /* 边框色 */
   --border-color: #e0e0e0;
-  /* 边框色 */
+  /* 组件背景色 */
   --bg-color-cpt: #fff;
+  /** 遮罩背景色 */
+  --mask-bg-color: rgba(0, 0, 0, 0.5);
 }

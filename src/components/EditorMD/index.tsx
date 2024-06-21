@@ -68,7 +68,7 @@ const EditorMD = (
       {onlyRead ? (
         <div className="custom-markdown-body flex w-auto gap-4">
           <Viewer plugins={plugins} value={value} />
-          <Toc value={value} className="max-w-64" />
+          <Toc value={value} className="max-w-64 hidden sm:block" />
         </div>
       ) : (
         <div className="custom-markdown-body">

@@ -33,7 +33,7 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   detail,
 }) => {
   return (
-    <div className="mx-auto max-w-4xl">
+    <div className="container mx-auto max-w-4xl">
       <SEO
         title={detail?.title}
         keywords={detail?.tag}

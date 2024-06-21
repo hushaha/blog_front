@@ -1,6 +1,6 @@
 import Router from "next/router";
 
-import NotFoundSVG from "@/assets/404.svg";
+import NotFoundSVG from "@/assets/imgs/404.svg";
 
 export default function FourZeroFour() {
   const toHome = () => {

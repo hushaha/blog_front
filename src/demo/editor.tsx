@@ -31,7 +31,7 @@ const Editor = () => {
         <input
           type="text"
           ref={titleRef}
-          className="input-border-none flex-1 text-2xl font-medium"
+          className="input-border-none flex-1 text-xl font-medium sm:text-2xl"
           placeholder="输入文章标题..."
         />
         <div>

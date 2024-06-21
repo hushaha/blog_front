@@ -1,24 +1,39 @@
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
-import { BASE_CONFIG } from "@/config";
+import Logo from "@/assets/imgs/logo.svg";
+
+import HomeSide from "./HomeSide";
+import Links from "./Links";
 
 const Header = () => {
+  const [visabled, setVisabled] = useState(false);
+
+  const onChangeMenuVis = (e) => {
+    setVisabled(e);
+  };
+
   return (
-    <nav className="bg-white px-6 py-4 shadow">
-      <div className="container mx-auto max-w-6xl flex flex-col md:flex-row md:items-center md:justify-between">
+    <nav className="q-bg-cpt px-6 py-3 shadow">
+      <div className="container mx-auto flex max-w-6xl items-center justify-between">
         <Link href="/" passHref>
-          <a className="text-2xl font-bold">{BASE_CONFIG.title}</a>
+          <a className="text-xl font-bold sm:text-2xl">
+            <Logo />
+          </a>
         </Link>
-        <div className="flex-shrink-0">
-          <Link href="/blog">
-            <a className="q-color-primary-hover mx-4 font-bold">博客</a>
-          </Link>
-          <Link href="/tags">
-            <a className="q-color-primary-hover mx-4 font-bold">标签</a>
-          </Link>
+        <div className="flex items-center md:hidden">
+          <button
+            className="icon-[ep--menu]"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+            onClick={() => onChangeMenuVis(true)}
+          />
+        </div>
+        <div className="hidden flex-shrink-0 md:block">
+          <Links onClick={() => onChangeMenuVis(false)} />
         </div>
       </div>
+      <HomeSide visabled={visabled} onChange={onChangeMenuVis} />
     </nav>
   );
 };

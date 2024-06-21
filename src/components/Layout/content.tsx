@@ -13,18 +13,18 @@ const Content: FC<Props> = ({ title, onSearch, children }) => {
     }
   };
   return (
-    <>
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">{title}</h1>
+    <div>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h1 className="text-xl font-bold sm:text-2xl">{title}</h1>
         <input
           type="text"
-          className="q-input w-2/5"
+          className="q-input w-full sm:w-2/5"
           placeholder="请输入关键字回车搜索"
           onKeyUp={onEnter}
         />
       </div>
       {children}
-    </>
+    </div>
   );
 };
 

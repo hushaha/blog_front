@@ -1,6 +1,6 @@
 import { BASE_CONFIG } from "@/config";
 
-const { title, copyright, github, name } = BASE_CONFIG;
+const { copyright, github, name } = BASE_CONFIG;
 
 const Footer = () => {
   return (
@@ -11,9 +11,7 @@ const Footer = () => {
           {name}
         </a>
       </p>
-      <p>
-        {copyright} {title}
-      </p>
+      <p>{copyright}</p>
     </footer>
   );
 };

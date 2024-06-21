@@ -2,7 +2,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 
 import { BASE_CONFIG } from "@/config";
 
-const { description, keywords, title } = BASE_CONFIG;
+const { description, keywords } = BASE_CONFIG;
 
 class MyDocument extends Document {
   render() {
@@ -11,7 +11,6 @@ class MyDocument extends Document {
         <Head>
           <meta name="description" content={description} />
           <meta name="keywords" content={keywords} />
-          <meta property="og:title" content={title} key="title" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
