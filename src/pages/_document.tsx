@@ -11,7 +11,7 @@ class MyDocument extends Document {
         <Head>
           <meta name="description" content={description} />
           <meta name="keywords" content={keywords} />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.svg" />
         </Head>
         <body>
           <Main />

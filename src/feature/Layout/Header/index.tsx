@@ -22,14 +22,14 @@ const Header = () => {
             <Logo />
           </a>
         </Link>
-        <div className="flex items-center md:hidden">
+        <div className="flex items-center sm:hidden">
           <button
             className="icon-[ep--menu]"
             style={{ width: "1.5rem", height: "1.5rem" }}
             onClick={() => onChangeMenuVis(true)}
           />
         </div>
-        <div className="hidden flex-shrink-0 md:block">
+        <div className="hidden flex-shrink-0 sm:block">
           <Links onClick={() => onChangeMenuVis(false)} />
         </div>
       </div>

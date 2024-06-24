@@ -8,5 +8,5 @@ export const BASE_CONFIG = {
   name: "Hush",
   email: "que_chenping@163.com",
   github: "https://github.com/quechenping",
-  copyright: "@copyright 2021-2024",
+  copyright: "©copyright 2021-2024",
 };

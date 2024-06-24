@@ -2,7 +2,7 @@
 
 @layer components {
   .q-card {
-    @apply rounded-lg px-10 py-6 shadow-md;
+    @apply rounded-lg p-6 shadow-md sm:px-10;
     background-color: var(--bg-color-cpt);
   }
 }
