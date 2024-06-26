@@ -14,7 +14,7 @@ const LoopTocTree: FC<{ treeList: TocTree }> = ({ treeList }) => {
       {treeList.map((item, idx) => (
         <div key={idx} className="flex flex-col">
           <a
-            className="q-color-primary-hover q-secondary cursor-pointer truncate leading-6"
+            className="q-color-primary-hover q-secondary truncate leading-6 hover:underline"
             href={`#${item.value.toLocaleLowerCase()}`}
           >
             {item.value}
@@ -29,13 +29,8 @@ const LoopTocTree: FC<{ treeList: TocTree }> = ({ treeList }) => {
 const Toc: FC<Props> = ({ value, className }) => {
   const treeList = useMemo<TocTree>(() => getTocTree(value), [value]);
   return (
-    <div
-      className={`${className} sticky right-0 top-10 h-1/2`}
-    >
-      <div className="toc-title border-b pb-1 pl-2 font-medium">目录</div>
-      <div className="toc-content">
-        <LoopTocTree treeList={treeList} />
-      </div>
+    <div className={`${className}`}>
+      <LoopTocTree treeList={treeList} />
     </div>
   );
 };

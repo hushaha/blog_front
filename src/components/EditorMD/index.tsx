@@ -64,24 +64,19 @@ const EditorMD = (
   }));
 
   return (
-    <>
+    <div className="custom-markdown-body">
       {onlyRead ? (
-        <div className="custom-markdown-body flex w-auto gap-4">
-          <Viewer plugins={plugins} value={value} />
-          <Toc value={value} className="max-w-64 hidden sm:block" />
-        </div>
+        <Viewer plugins={plugins} value={value} />
       ) : (
-        <div className="custom-markdown-body">
-          <Editor
-            locale={zhHans}
-            plugins={plugins}
-            value={value}
-            onChange={onValueChange}
-            uploadImages={onUploadImages}
-          />
-        </div>
+        <Editor
+          locale={zhHans}
+          plugins={plugins}
+          value={value}
+          onChange={onValueChange}
+          uploadImages={onUploadImages}
+        />
       )}
-    </>
+    </div>
   );
 };
 

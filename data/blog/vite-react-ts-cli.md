@@ -3,7 +3,7 @@ title: vite-react-ts-cli脚手架搭建
 createTime: 2022-08-03
 updateTime: 2022-08-03
 authors: hush
-tag: cli,react,typescript,vite
+tag: cli, react, typescript, vite
 ---
 
 ## 前言

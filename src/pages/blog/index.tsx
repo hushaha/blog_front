@@ -44,7 +44,7 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <div className="sm:w-4/5 lg:w-1/2">
         <BlogList title="Post" list={curList} onSearch={onSearch} />
       </div>
-      <div className="hidden w-80 max-w-sm shrink-0 lg:block">
+      <div className="sticky top-6 hidden h-fit w-80 max-w-sm shrink-0 lg:block">
         <SideBar tagList={tagList} />
       </div>
     </div>

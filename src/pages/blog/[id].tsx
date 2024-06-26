@@ -2,7 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { FC } from "react";
 
-import { EditorMD, SEO } from "@/components";
+import { EditorMD, SEO, Toc } from "@/components";
 import type { BlogItem } from "@/types";
 import sHttp from "@/utils/getStaticData";
 
@@ -33,13 +33,13 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   detail,
 }) => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto flex justify-center gap-10">
       <SEO
         title={detail?.title}
         keywords={detail?.tag}
         description={detail?.desc}
       />
-      <div className="mx-auto max-w-4xl">
+      <div className="q-card w-full lg:w-2/3">
         <div>
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight">
             {detail?.title}
@@ -59,6 +59,15 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </div>
         </div>
         <EditorMD onlyRead value={detail?.content} />
+      </div>
+      <div className="sticky top-6 hidden h-fit w-80 max-w-sm shrink-0 lg:block">
+        <div className="q-card">
+          <div className="border-b pb-2 font-bold">目录</div>
+          <Toc
+            value={detail?.content}
+            className="mt-2 hidden max-w-64 sm:block"
+          />
+        </div>
       </div>
     </div>
   );

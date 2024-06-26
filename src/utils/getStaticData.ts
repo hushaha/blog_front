@@ -77,7 +77,12 @@ class StaticData {
       };
 
       return configList.reduce((acc, cur) => {
-        const [key, value] = cur.split(":");
+        let [key, value] = cur.split(":");
+
+        if (key === "tag") {
+          value = value.replaceAll(" ", "");
+        }
+        
         acc[key.trim()] = value.trim();
         return acc;
       }, fileConfig);

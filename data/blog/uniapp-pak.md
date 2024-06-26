@@ -3,7 +3,7 @@ title: uniapp打包安卓和ios
 createTime: 2022-09-01
 updateTime: 2022-09-01
 authors: hush
-tag: uniapp,android,ios
+tag: uniapp, android, ios
 ---
 
 ### 基础配置
