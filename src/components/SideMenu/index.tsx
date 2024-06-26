@@ -13,11 +13,11 @@ const SideMenu: FC<Props> = ({ visabled, children, onChange }) => {
   return (
     visabled && (
       <div
-        className="q-mask-bg animation-HideToDown fixed left-0 top-0 h-screen w-screen"
+        className="q-mask-bg animation-HideToDown fixed left-0 top-0 z-50 h-screen w-screen"
         onClick={onHideMenu}
       >
         <div
-          className="q-bg left-0 top-0 z-10 w-full px-6 pb-6 pt-4"
+          className="q-bg left-0 top-0 w-full px-6 pb-6 pt-4"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative h-6">

@@ -11,6 +11,15 @@
   --border-color: #e0e0e0;
   /* 组件背景色 */
   --bg-color-cpt: #fff;
-  /** 遮罩背景色 */
+  /* 遮罩背景色 */
   --mask-bg-color: rgba(0, 0, 0, 0.5);
+
+  /* info */
+  --info-color: #2196f3;
+  /* success */
+  --success-color: #4caf50;
+  /* warning */
+  --warning-color: #fbc02d;
+  /* error */
+  --error-color: #d32f2f;
 }

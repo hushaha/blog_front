@@ -27,13 +27,16 @@ const BlogDesc: FC<Props> = ({ item }) => {
             查看详情
           </a>
         </Link>
+        <div className="block sm:hidden">
+          <Link href={`/tags/${tags[0]}`} passHref>
+            <a className="q-tag">{tags[0]}</a>
+          </Link>
+        </div>
         <div className="hidden gap-2 sm:flex">
           {tags.map((itm) => (
-            <div key={itm}>
-              <Link href={`/tags/${itm}`} passHref>
-                <a className="q-tag">{itm}</a>
-              </Link>
-            </div>
+            <Link key={itm} href={`/tags/${itm}`} passHref>
+              <a className="q-tag">{itm}</a>
+            </Link>
           ))}
         </div>
       </div>

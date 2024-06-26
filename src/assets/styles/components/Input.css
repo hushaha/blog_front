@@ -2,7 +2,7 @@
 
 @layer components {
   .q-input {
-    @apply inline-block rounded-md border px-4 py-2;
+    @apply inline-block rounded-lg border px-4 py-4 text-sm leading-5;
     background-color: var(--bg-color-cpt);
   }
 

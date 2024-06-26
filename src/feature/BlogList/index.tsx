@@ -13,11 +13,15 @@ interface Props {
 const BlogList: FC<Props> = ({ title, list, onSearch }) => {
   return (
     <Content title={title} onSearch={onSearch}>
-      <div className="mt-6 flex flex-col gap-6">
-        {(list || []).map((itm) => (
-          <BlogDesc key={itm.id} item={itm} />
-        ))}
-      </div>
+      {!!list?.length ? (
+        <div className="mt-6 flex flex-col gap-6">
+          {(list || []).map((itm) => (
+            <BlogDesc key={itm.id} item={itm} />
+          ))}
+        </div>
+      ) : (
+        <div className="w-full h-full flex items-center justify-center">暂无数据</div>
+      )}
     </Content>
   );
 };

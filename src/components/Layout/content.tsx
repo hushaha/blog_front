@@ -13,7 +13,7 @@ const Content: FC<Props> = ({ title, onSearch, children }) => {
     }
   };
   return (
-    <div>
+    <div className="w-full h-full">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-xl font-bold sm:text-2xl">{title}</h1>
         <input

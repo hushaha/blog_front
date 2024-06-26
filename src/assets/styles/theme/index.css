@@ -26,4 +26,24 @@
   .q-mask-bg {
     background-color: var(--mask-bg-color);
   }
+
+  .q-info {
+    color: var(--info-color);
+  }
+
+  .q-success {
+    color: var(--success-color);
+  }
+
+  .q-error {
+    color: var(--error-color);
+  }
+
+  .q-warning {
+    color: var(--warning-color);
+  }
+
+  .q-border {
+    border: 1px solid var(--border-color);
+  }
 }

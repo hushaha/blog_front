@@ -2,7 +2,7 @@ import Router from "next/router";
 
 import NotFoundSVG from "@/assets/imgs/404.svg";
 
-export default function FourZeroFour() {
+const NotFound = () => {
   const toHome = () => {
     Router.push({ pathname: "/" });
   };
@@ -12,13 +12,15 @@ export default function FourZeroFour() {
       <div className="w-2/5">
         <NotFoundSVG />
       </div>
-      <div className="w-2/5">
+      <div className="w-1/3">
         <h1 className="text-8xl font-bold">404</h1>
         <p className="mt-2">当前页面不存在, 请点击返回首页按钮</p>
-        <button className="mt-4" onClick={toHome}>
+        <button className="q-button mt-4" onClick={toHome}>
           首页
         </button>
       </div>
     </div>
   );
-}
+};
+
+export default NotFound;

@@ -33,31 +33,33 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   detail,
 }) => {
   return (
-    <div className="container mx-auto max-w-4xl">
+    <div className="container mx-auto">
       <SEO
         title={detail?.title}
         keywords={detail?.tag}
         description={detail?.desc}
       />
-      <div>
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight">
-          {detail?.title}
-        </h1>
-        <div className="mt-8 flex flex-wrap items-center gap-4 text-sm">
-          <span>{detail?.authors}</span>
-          <span>{detail?.createTime}</span>
-          {detail?.tag && (
-            <span className="flex flex-wrap gap-2">
-              {detail.tag.split(",").map((itm) => (
-                <Link key={itm} href={`/tags/${itm}`} passHref>
-                  <a className="q-tag">{itm}</a>
-                </Link>
-              ))}
-            </span>
-          )}
+      <div className="mx-auto max-w-4xl">
+        <div>
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight">
+            {detail?.title}
+          </h1>
+          <div className="mt-8 flex flex-wrap items-center gap-4 text-sm">
+            <span>{detail?.authors}</span>
+            <span>{detail?.createTime}</span>
+            {detail?.tag && (
+              <span className="flex flex-wrap gap-2">
+                {detail.tag.split(",").map((itm) => (
+                  <Link key={itm} href={`/tags/${itm}`} passHref>
+                    <a className="q-tag">{itm}</a>
+                  </Link>
+                ))}
+              </span>
+            )}
+          </div>
         </div>
+        <EditorMD onlyRead value={detail?.content} />
       </div>
-      <EditorMD onlyRead value={detail?.content} />
     </div>
   );
 };
