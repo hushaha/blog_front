@@ -10,10 +10,10 @@ type Props = {
   tag: string;
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const paths = sHttp.getTagList().map((itm) => `/tags/${itm.name}`);
   return { paths, fallback: true };
-}
+};
 
 export const getStaticProps: GetStaticProps<{
   list: BlogItem[];
@@ -47,7 +47,7 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl">
       <SEO title={tag} />
       <BlogList title={tag} list={curList} onSearch={onSearch} />
     </div>

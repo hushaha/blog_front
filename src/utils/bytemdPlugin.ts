@@ -2,7 +2,7 @@ import type { BytemdPlugin } from "bytemd";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 
-export function autolinkHeadingsPlugin(): BytemdPlugin {
+export const autolinkHeadingsPlugin = (): BytemdPlugin => {
   return {
     rehype: (processor) =>
       processor
@@ -10,4 +10,4 @@ export function autolinkHeadingsPlugin(): BytemdPlugin {
         // @ts-ignore
         .use(rehypeAutolinkHeadings, { behavior: "append" }),
   };
-}
+};

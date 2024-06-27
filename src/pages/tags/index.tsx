@@ -35,24 +35,30 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   };
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <div className="max-w-4xl mx-auto">
       <SEO title="标签" />
       <Content title="标签" onSearch={onSearch}>
-        <div className="mt-6 grid grid-cols-3 gap-8">
-          {(curList || []).map((itm) => (
-            <Link
-              href="/tags/[tag]"
-              as={`/tags/${itm.name}`}
-              key={itm.name}
-              passHref
-            >
-              <a className="q-color-primary-hover truncate text-center">
-                {itm.name}
-                {`(${itm.count})`}
-              </a>
-            </Link>
-          ))}
-        </div>
+        {!!curList?.length ? (
+          <div className="mt-6 grid grid-cols-3 gap-8">
+            {curList.map((itm) => (
+              <Link
+                href="/tags/[tag]"
+                as={`/tags/${itm.name}`}
+                key={itm.name}
+                passHref
+              >
+                <a className="q-color-primary-hover truncate text-center">
+                  {itm.name}
+                  {`(${itm.count})`}
+                </a>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            暂无数据
+          </div>
+        )}
       </Content>
     </div>
   );

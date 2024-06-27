@@ -10,10 +10,10 @@ type Props = {
   id: string;
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const paths = sHttp.getBlogList().map((itm) => `/blog/${itm.id}`);
   return { paths, fallback: true };
-}
+};
 
 export const getStaticProps: GetStaticProps<{
   detail: BlogItem;
@@ -29,17 +29,17 @@ export const getStaticProps: GetStaticProps<{
   return { props: { detail } };
 };
 
-const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  detail,
-}) => {
+const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
+  moHiddenLayout: boolean;
+} = ({ detail }) => {
   return (
-    <div className="container mx-auto flex justify-center gap-10">
+    <div className="flex justify-center gap-10">
       <SEO
         title={detail?.title}
         keywords={detail?.tag}
         description={detail?.desc}
       />
-      <div className="q-card w-full lg:w-2/3">
+      <div className="q-card w-full lg:w-3/5">
         <div>
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight">
             {detail?.title}
@@ -60,17 +60,19 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
         </div>
         <EditorMD onlyRead value={detail?.content} />
       </div>
-      <div className="sticky top-6 hidden h-fit w-80 max-w-sm shrink-0 lg:block">
+      <div className="sticky top-6 hidden h-fit w-80 shrink-0 lg:block">
         <div className="q-card">
           <div className="border-b pb-2 font-bold">目录</div>
           <Toc
             value={detail?.content}
-            className="mt-2 hidden max-w-64 sm:block"
+            className="mt-2 hidden max-h-80 max-w-64 overflow-auto sm:block"
           />
         </div>
       </div>
     </div>
   );
 };
+
+Blog.moHiddenLayout = true;
 
 export default Blog;

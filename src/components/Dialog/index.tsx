@@ -13,7 +13,7 @@ const Dialog: FC<DialogProps> = ({ visabled, title, children }) => {
     closeLogin();
   };
 
-  return (
+  return visabled ? (
     <div
       className={`fixed inset-0 left-0 top-0 z-40 flex items-center justify-center backdrop-blur-md ${visabled ? "animation-HideToDown block" : "hidden"}`}
     >
@@ -28,6 +28,8 @@ const Dialog: FC<DialogProps> = ({ visabled, title, children }) => {
         {children}
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

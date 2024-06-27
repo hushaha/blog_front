@@ -59,4 +59,4 @@ const Editor = () => {
 
 export default Editor;
 
-Editor.hiddenLayout = true;
+Editor.moHiddenLayout = true;

@@ -39,12 +39,12 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   };
 
   return (
-    <div className="container mx-auto flex justify-center gap-10">
+    <div className="flex justify-center gap-10">
       <SEO title="所有文章" />
-      <div className="sm:w-4/5 lg:w-1/2">
+      <div className="w-full lg:w-3/5">
         <BlogList title="Post" list={curList} onSearch={onSearch} />
       </div>
-      <div className="sticky top-6 hidden h-fit w-80 max-w-sm shrink-0 lg:block">
+      <div className="sticky top-6 hidden h-fit w-80 shrink-0 lg:block">
         <SideBar tagList={tagList} />
       </div>
     </div>

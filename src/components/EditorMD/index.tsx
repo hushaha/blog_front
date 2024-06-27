@@ -18,7 +18,6 @@ import {
   useState,
 } from "react";
 
-import { Toc } from "@/components";
 import { autolinkHeadingsPlugin } from "@/utils";
 
 const plugins = [
