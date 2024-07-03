@@ -67,11 +67,15 @@ export const throttle = <T extends (...args: any[]) => void>(
  *  判断是否是移动端
  * @returns {boolean} 是否是移动端
  */
-export const isMobile = (): boolean => {
+export const isMobile = ((): boolean => {
   return (
     typeof window !== "undefined" &&
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent,
     )
   );
+})();
+
+export const copyToClipboard = (text: any) => {
+  navigator.clipboard.writeText(text);
 };

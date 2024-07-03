@@ -2,6 +2,10 @@ import type { BytemdPlugin } from "bytemd";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 
+import { message } from "@/components";
+
+import { copyToClipboard } from "./util";
+
 export const autolinkHeadingsPlugin = (): BytemdPlugin => {
   return {
     rehype: (processor) =>
@@ -9,5 +13,35 @@ export const autolinkHeadingsPlugin = (): BytemdPlugin => {
         .use(rehypeSlug)
         // @ts-ignore
         .use(rehypeAutolinkHeadings, { behavior: "append" }),
+  };
+};
+
+const createCopyDom = (text: any): HTMLElement => {
+  const copyDom = document.createElement("div");
+  copyDom.className =
+    "absolute right-2 top-1 cursor-pointer text-sm font-normal q-color-primary-hover q-secondary";
+  copyDom.innerHTML = `copy`;
+  copyDom.addEventListener("click", () => {
+    copyToClipboard(text);
+    message.info({
+      title: "系统通知",
+      content: "复制成功",
+    });
+  });
+  return copyDom;
+};
+
+export const codeCopyPlugin = (): BytemdPlugin => {
+  return {
+    viewerEffect: ({ markdownBody }) => {
+      // 获取所有code标签
+      const els = markdownBody.querySelectorAll("pre>code");
+      if (els.length === 0) return;
+
+      // 往pre标签中append copy节点
+      els.forEach((itm: HTMLElement) => {
+        itm.parentNode.appendChild(createCopyDom(itm.innerText));
+      });
+    },
   };
 };

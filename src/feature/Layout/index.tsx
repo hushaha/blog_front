@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 
 import { BackTop } from "@/components";
 import { isMobile } from "@/utils";
@@ -11,7 +11,13 @@ interface Props {
 }
 
 const LayoutWrapper: FC<Props> = ({ moHiddenLayout, children }) => {
-  return isMobile() && moHiddenLayout ? (
+  const [hideLayout, setHideLayout] = useState(false);
+
+  useEffect(() => {
+    setHideLayout(isMobile && !!moHiddenLayout);
+  }, [moHiddenLayout]);
+
+  return hideLayout ? (
     <div className="min-h-screen w-full">
       {children}
       <BackTop />

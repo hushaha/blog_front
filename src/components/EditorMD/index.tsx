@@ -2,10 +2,10 @@ import "bytemd/dist/index.min.css";
 import "highlight.js/styles/atom-one-dark.min.css";
 
 import footnotes from "@bytemd/plugin-footnotes";
-import frontmatter from "@bytemd/plugin-frontmatter";
 import gemoji from "@bytemd/plugin-gemoji";
 import gfm from "@bytemd/plugin-gfm";
-import highlight from "@bytemd/plugin-highlight-ssr";
+import gfmZhHans from "@bytemd/plugin-gfm/locales/zh_Hans.json";
+import highlightSSR from "@bytemd/plugin-highlight-ssr";
 import mediumZoom from "@bytemd/plugin-medium-zoom";
 import mermaid from "@bytemd/plugin-mermaid";
 import { Editor, Viewer } from "@bytemd/react";
@@ -18,27 +18,28 @@ import {
   useState,
 } from "react";
 
-import { autolinkHeadingsPlugin } from "@/utils";
+import { autolinkHeadingsPlugin, codeCopyPlugin } from "@/utils";
 
 const plugins = [
   footnotes(),
-  frontmatter(),
   gemoji(),
-  highlight(),
+  highlightSSR(),
   mediumZoom(),
   mermaid(),
-  gfm(),
+  gfm({ locale: gfmZhHans }),
   autolinkHeadingsPlugin(),
+  codeCopyPlugin(),
 ];
 
 type EditorProps = {
   onlyRead?: boolean;
   value?: string;
   onChange?: (e: string) => void;
+  className?: string;
 };
 
 const EditorMD = (
-  { onlyRead = false, value: defaultValue, onChange }: EditorProps,
+  { onlyRead = false, value: defaultValue, className, onChange }: EditorProps,
   ref: Ref<unknown>,
 ) => {
   const [value, setValue] = useState(() => defaultValue || "");
@@ -63,7 +64,7 @@ const EditorMD = (
   }));
 
   return (
-    <div className="custom-markdown-body">
+    <div className={`custom-markdown-body ${className}`}>
       {onlyRead ? (
         <Viewer plugins={plugins} value={value} />
       ) : (

@@ -4,6 +4,7 @@ createTime: 2023-08-01
 updateTime: 2023-08-01
 authors: hush
 tag: blog, Next, mongodb, TailwindCSS
+cover: next.png
 ---
 
 准备做一个博客, 预先准备使用 `React` 编写博客, 根据小马哥的博客得到的启发, 直接用 `Next + TailwindCSS` 编写该博客, 因此开始学习下预备知识.

@@ -58,7 +58,7 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
             )}
           </div>
         </div>
-        <EditorMD onlyRead value={detail?.content} />
+        <EditorMD onlyRead value={detail?.content} className="mt-12" />
       </div>
       <div className="sticky top-6 hidden h-fit w-80 shrink-0 lg:block">
         <div className="q-card">

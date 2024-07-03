@@ -8,6 +8,7 @@ export interface BlogItem {
   authors?: string;
   tag?: string;
   isDrafts?: boolean;
+  cover?: string;
 }
 
 export interface TagItem {

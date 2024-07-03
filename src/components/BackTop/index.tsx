@@ -6,17 +6,27 @@ const BackTop = () => {
   const [visabled, setVisabled] = useState(false);
 
   useEffect(() => {
+    // 防止卸载后继续触发scroll事件
+    let igore = false;
+
     const onScroll = throttle(() => {
+      if (igore) {
+        return;
+      }
+
       if (window.scrollY < 50) {
         setVisabled(false);
       } else {
         setVisabled(true);
       }
-    });
+    }, 300);
 
     document.addEventListener("scroll", onScroll, true);
 
-    return () => document.removeEventListener("scroll", onScroll);
+    return () => {
+      igore = true;
+      document.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const scrollToTop = () => {
