@@ -1,5 +1,5 @@
 ---
-title: vercel+next+node搭建服务端渲染博客(BSR)
+title: vercel+next搭建服务端渲染博客(BSR)
 createTime: 2023-08-01
 updateTime: 2023-08-01
 authors: hush
@@ -9,7 +9,7 @@ cover: next.png
 
 准备做一个博客, 预先准备使用 `React` 编写博客, 根据小马哥的博客得到的启发, 直接用 `Next + TailwindCSS` 编写该博客, 因此开始学习下预备知识.
 
-### 技术栈
+## 技术栈
 
 * 使用 `Next+TailwindCSS` 开发前端页面, 
 * 用 `node+mongodb` 作为后台, 基于功能量比较少, 于是选择 `express` 作为服务端框架
@@ -29,6 +29,8 @@ cover: next.png
 基于代码量大难维护, 且不同开发者编写的结构不同, 出现了react、vue等上层框架, 为了统一开发规范以及优化开发模式, 且为了大型项目的性能以及规范着想, 做了很多js优化的事情, 导致页面都是通过js操作dom渲染形成的, 无论在seo上还是加载上都会慢于原生开发.
 
 因此next的诞生就是为了解决这个问题, 其实很好理解, 就是将现在的开发模式下的js代码改为生产模式下的原生html代码, 开发阶段保持正常react格式开发, 但是打包后生成的是一个个html文件
+
+## 架构
 
 ### 为什么选择BSR
 
@@ -54,11 +56,9 @@ cover: next.png
 
 因为采用tailwind作为样式库, 所以编写了部分公共组件, 比如 Dialog、Message、Editor 等
 
-其中md编辑器及渲染器采用的是 `bytemd` , 仿照掘金的编辑器, 但是md渲染样式方面我使用的是 `tailwindcss/forms` 中的 `prose` , 
+其中md编辑器及渲染器采用的是 `bytemd` , 仿照掘金的样式加点调整
 
-其实可以使用bytemd提供的一些样式案例, 比如**github、掘金**等样式
-
-### 后端编码
+### 后端架构
 
 后端通过 `mongoose` 操作数据库, 通过 `jsonwebtoken` 生成token对用户进行权限校验
 
@@ -73,7 +73,7 @@ cover: next.png
     |-- utils       # 工具库
 ```
 
-#### 测试
+### 接口测试
 
 test目录是使用vscode插件 `REST Client` 快速测试用的, 该插件支持配置一个.http为后缀的文件, 内容结构如下
 
@@ -93,9 +93,9 @@ content-type: application/json
 
 我将所有接口在此处存放一份, 方便快速调试
 
-### 部署
+## 部署
 
-#### 静态项目部署
+### 静态项目部署
 
 前端项目部署时添加一个环境变量
 
@@ -103,9 +103,7 @@ content-type: application/json
 #.env.development
 NEXT_PUBLIC_API_HOST="http://127.0.0.1:8000"
 NEXT_PUBLIC_API_BASE_PATH="/blog"
-```
 
-```bash
 #.env.production
 NEXT_PUBLIC_API_HOST="https://backend.app"
 NEXT_PUBLIC_API_BASE_PATH="https://backend.app"
@@ -133,7 +131,7 @@ module.exports = {
 
 此时开发环境将代理到本地8000端口上, 而生产环境则代理到对应后端服务上
 
-#### node项目部署
+### node项目部署
 
 package.json添加如下命令
 
@@ -188,20 +186,19 @@ package.json添加如下命令
 
 此时部署应该就可以访问到node项目了
 
-### 问题
+## 问题
 
-1. 暂时没有购买域名,因此vercel部署的网站国内经常访问不到
+1. 暂时没有购买域名, 因此vercel部署的网站国内经常访问不到
 2. 为了实现全部线上操作的功能, 最终采用的**BSR**渲染方式并没有完全发挥**next**框架的优势, 因为前后端项目都部署在vercel上, 会有点子慢
 3. `bytemd`编辑器不错, 但是渲染器只是md渲染器, 没办法进行代码复制, 文章目录, 嵌入代码实例等功能
 
-### 优化方案
+## 优化方案
 
 1. 购买个域名代理一下
 2. 再对比下后续维护方式, 如果采用SSG方式,纯静态页面渲染, 只有点赞阅读量评论等通过后台管理, 则会更提高访问速度, 只是每次更新文章都需要提交代码
-3. 使用mdx渲染
 
-#### 链接
+## 链接
 
 https://maqib.cn/blog/Refactoring-my-blog-using-NextJS-and-TailwindCSS
 
-https://q-blog-front.vercel.app
+https://blog.hushaha.top

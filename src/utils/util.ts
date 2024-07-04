@@ -64,7 +64,7 @@ export const throttle = <T extends (...args: any[]) => void>(
 };
 
 /**
- *  判断是否是移动端
+ * 判断是否是移动端
  * @returns {boolean} 是否是移动端
  */
 export const isMobile = ((): boolean => {
@@ -76,6 +76,21 @@ export const isMobile = ((): boolean => {
   );
 })();
 
+/**
+ * 复制到剪贴板
+ * @param text 要复制的文本
+ */
 export const copyToClipboard = (text: any) => {
   navigator.clipboard.writeText(text);
+};
+
+/**
+ * 获取图片地址
+ * @param name 图片名称
+ * @param type 图片类型 cover / ... 
+ * @returns 图片地址
+ */
+export const getImageUrl = (name: string, type?: string) => {
+  const u = !type ? name : `${type}/${name}`;
+  return `/images/${u}`;
 };

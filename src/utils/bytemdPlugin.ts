@@ -6,6 +6,10 @@ import { message } from "@/components";
 
 import { copyToClipboard } from "./util";
 
+/**
+ * 自动生成标题Link
+ * @returns BytemdPlugin
+ */
 export const autolinkHeadingsPlugin = (): BytemdPlugin => {
   return {
     rehype: (processor) =>
@@ -30,6 +34,10 @@ const createCopyDom = (text: any): HTMLElement => {
   return copyDom;
 };
 
+/**
+ * 代码复制
+ * @returns BytemdPlugin
+ */
 export const codeCopyPlugin = (): BytemdPlugin => {
   return {
     viewerEffect: ({ markdownBody }) => {

@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+  .q-img {
+    @apply rounded object-cover shadow-lg;
+  }
+}

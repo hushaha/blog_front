@@ -1,9 +1,10 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useMemo } from "react";
 
 import { EditorMD, SEO, Toc } from "@/components";
 import type { BlogItem } from "@/types";
+import { getImageUrl } from "@/utils";
 import sHttp from "@/utils/getStaticData";
 
 type Props = {
@@ -32,6 +33,11 @@ export const getStaticProps: GetStaticProps<{
 const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
   moHiddenLayout: boolean;
 } = ({ detail }) => {
+  const coverImg = useMemo(
+    () => (detail.cover ? getImageUrl(detail.cover, "cover") : ""),
+    [detail.cover],
+  );
+
   return (
     <div className="flex justify-center gap-10">
       <SEO
@@ -58,6 +64,11 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
             )}
           </div>
         </div>
+        <img
+          src={coverImg}
+          alt={detail.title}
+          className="q-img mt-8 h-auto w-full"
+        />
         <EditorMD onlyRead value={detail?.content} className="mt-12" />
       </div>
       <div className="sticky top-6 hidden h-fit w-80 shrink-0 lg:block">

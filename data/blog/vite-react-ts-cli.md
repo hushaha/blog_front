@@ -66,7 +66,7 @@ tag: cli, react, typescript, vite
     |-- main.tsx		# 入口文件
 ```
 
-### 配置alias
+## 配置alias
 
 先安装 `@types/node`
 
@@ -101,7 +101,7 @@ export default defineConfig({
 }
 ```
 
-### 配置proxy
+## 配置proxy
 
 编辑 `vite.config.ts` 文件
 
@@ -117,7 +117,7 @@ server: {
   },
 ```
 
-### 集成react-router-dom
+## 集成react-router-dom
 
 执行如下命令安装 `react-router-dom`
 
@@ -137,7 +137,6 @@ export const AppRoutes = () => {
   const element = useRoutes([...routers])
   return <>{element}</>
 }
-
 ```
 
 在 `routers` 文件夹下定义 `routers.tsx` 文件，并写入如下代码，其中 `About` 和 `Home` 为在 `pages` 中定义好的组件，内容随意
@@ -162,7 +161,7 @@ const routers = [
 export default routers
 ```
 
-### 集成react-error-boundary
+## 集成react-error-boundary
 
 因为该脚手架想使用全hook形式开发，所以引用该插件获取组件错误
 
@@ -197,7 +196,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 }
 ```
 
-### 调整App文件
+## 调整App文件
 
 ```tsx
 import { AppProvider } from "@/providers/app";
@@ -216,7 +215,7 @@ export default App;
 
 至此已经可以进行业务开发
 
-### 集成antd并按需加载
+## 集成antd并按需加载
 
 先安装antd
 
@@ -291,7 +290,7 @@ export default defineConfig({
 
 此时再执行 `pnpm build` 查看打包产物，可以发现css文件已经小很多
 
-### 集成eslint
+## 集成eslint
 
 执行如下命令安装依赖
 
@@ -319,15 +318,15 @@ extends: [
 ]
 ```
 
-#### 集成eslint-plugin-import
+### 集成eslint-plugin-import
 
-对于代码中的import过多时难以管理，使用 `eslint-plugin-import` 插件管理
+对于代码中的import过多时顺序难以管理，使用 `eslint-plugin-import` 插件管理
 
 ```shell
 pnpm add -D eslint-plugin-import
 ```
 
-#### import/order学习
+### import/order学习
 
 `groups` ：对导入模块进行分组
 
@@ -426,7 +425,7 @@ module.exports = {
 }
 ```
 
-### 集成husky-lint-staged-commitlint
+## 集成husky-lint-staged-commitlint
 
 husky插件的作用就是在git hook中添加操作, lint-staged则可以准确的定位到暂存区的代码并对其操作
 
@@ -440,7 +439,7 @@ husky插件的作用就是在git hook中添加操作, lint-staged则可以准确
 
 如果校验失败，则阻止提交
 
-#### githooks
+### githooks
 
 | git hook         | 执行时机          | 说明                                                                              |
 | ---------------- | ----------------- | --------------------------------------------------------------------------------- |
@@ -451,7 +450,7 @@ husky插件的作用就是在git hook中添加操作, lint-staged则可以准确
 | commit-msg       | git commit 执行前 | 可以使用 git commit --no verify 命令绕过该钩子                                    |
 | post-commit      | git commit 执行后 | 不影响git commit的结果                                                            |
 
-#### commit提交规范
+### commit提交规范
 
 使用angular规范的commitlint，格式要求：
 
@@ -493,7 +492,7 @@ husky插件的作用就是在git hook中添加操作, lint-staged则可以准确
 
 * `footer`: 如果代码的提交是不兼容变更或关闭缺陷，则footer必需，否则可以省略。
 
-#### 实现
+### 实现
 
 执行如下命令安装依赖
 
@@ -525,9 +524,8 @@ npx husky install
 
 1. 生成一个`pre-commit`钩子
 
-```shell l
+```shell
 npx husky add .husky/pre-commit "npx lint-staged"
-
 ```
 
 pre-commit`文件应该如下
@@ -576,6 +574,6 @@ module.exports = {
 
 至此配置全部完成
 
-### 参考
+## 参考
 
 git仓库地址: https://github.com/quechenping/vite-react-ts-cli/tree/master

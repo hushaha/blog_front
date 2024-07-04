@@ -56,7 +56,7 @@ const MessageItem = ({ title, content, show, type }: Message) => {
   return (
     <div
       role="alert"
-      className={`q-bg-cpt q-border mt-2 flex gap-4 rounded-md p-4 sm:min-w-80 sm:px-8 sm:py-4
+      className={`q-bg-cpt q-border mt-2 flex gap-4 rounded-md px-8 py-4 sm:min-w-96
         ${show ? "animation-HideToDown" : "animation-HideToUp"}`}
     >
       <div className="flex w-6 items-center">

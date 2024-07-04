@@ -18,7 +18,7 @@ import {
   useState,
 } from "react";
 
-import { autolinkHeadingsPlugin, codeCopyPlugin } from "@/utils";
+import { autolinkHeadingsPlugin, codeCopyPlugin } from "@/utils/bytemdPlugin";
 
 const plugins = [
   footnotes(),

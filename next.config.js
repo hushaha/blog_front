@@ -32,4 +32,15 @@ module.exports = withBundleAnalyzer({
       },
     ];
   },
+
+  // 重定向
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/blog",
+        permanent: true,
+      },
+    ];
+  },
 });

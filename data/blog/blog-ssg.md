@@ -3,7 +3,7 @@ title: vercel+next搭建服务端渲染博客(SSG)
 createTime: 2023-09-01
 updateTime: 2023-09-01
 authors: hush
-tag: blog, next
+tag: blog, Next, TailwindCSS
 isDrafts: true
 ---
 
