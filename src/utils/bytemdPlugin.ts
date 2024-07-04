@@ -19,8 +19,7 @@ export const autolinkHeadingsPlugin = (): BytemdPlugin => {
 const createCopyDom = (text: any): HTMLElement => {
   const copyDom = document.createElement("div");
   copyDom.className =
-    "absolute right-2 top-1 cursor-pointer text-sm font-normal q-color-primary-hover q-secondary";
-  copyDom.innerHTML = `copy`;
+    "q-color-primary-hover q-secondary icon-[ph--copy-bold] absolute right-2 top-2 cursor-pointer";
   copyDom.addEventListener("click", () => {
     copyToClipboard(text);
     message.info({

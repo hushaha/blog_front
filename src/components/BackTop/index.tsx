@@ -39,11 +39,11 @@ const BackTop = () => {
   return (
     <button
       className={`q-bg-cpt fixed bottom-10 right-1 z-10 animate-bounce items-center justify-center rounded-full shadow-md sm:right-10 sm:h-16 sm:w-16 ${visabled ? "flex" : "hidden"}`}
+      onClick={scrollToTop}
     >
       <span
         className="q-color-primary-hover icon-[mdi--arrow-top-circle]"
         style={{ width: "2rem", height: "2rem" }}
-        onClick={scrollToTop}
       />
     </button>
   );
