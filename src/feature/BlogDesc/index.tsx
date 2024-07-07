@@ -21,11 +21,13 @@ const BlogDesc: FC<Props> = ({ item }) => {
       {item.cover && (
         <div className="flex w-40 shrink-0 items-center">
           <Link href="/blog/[id]" as={`/blog/${item.id}`} passHref>
-            <img
-              src={coverImg}
-              alt={item.title}
-              className="q-img h-auto w-full cursor-pointer duration-200 hover:scale-110"
-            />
+            <div className="overflow-hidden rounded">
+              <img
+                src={coverImg}
+                alt={item.title}
+                className="q-img h-auto w-full cursor-pointer duration-200 hover:scale-125"
+              />
+            </div>
           </Link>
         </div>
       )}

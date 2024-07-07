@@ -1,5 +1,5 @@
 ---
-title: vercel+next搭建服务端渲染博客(BSR)
+title: vercel+next搭建服务端渲染博客(CSR)
 createTime: 2023-08-01
 updateTime: 2023-08-01
 authors: hush
@@ -11,10 +11,10 @@ cover: next.png
 
 ## 技术栈
 
-* 使用 `Next+TailwindCSS` 开发前端页面, 
-* 用 `node+mongodb` 作为后台, 基于功能量比较少, 于是选择 `express` 作为服务端框架
-* 使用 `vercel` 进行前端后端静态代码部署
-* 数据库使用 `MongoDB Cloud` 免费存储
+- 使用 `Next+TailwindCSS` 开发前端页面,
+- 用 `node+mongodb` 作为后台, 基于功能量比较少, 于是选择 `express` 作为服务端框架
+- 使用 `vercel` 进行前端后端静态代码部署
+- 数据库使用 `MongoDB Cloud` 免费存储
 
 ### TailwindCSS
 
@@ -32,9 +32,9 @@ cover: next.png
 
 ## 架构
 
-### 为什么选择BSR
+### 为什么选择CSR
 
-这里我预想是采用BSR渲染, 因为希望博客系统能支持在线录入文档且发布, 能在线上进行增删改插, 全程线上操作
+这里我预想是采用CSR渲染, 因为希望博客系统能支持在线录入文档且发布, 能在线上进行增删改插, 全程线上操作
 
 ### 前端架构
 
@@ -119,14 +119,16 @@ baseURL: process.env.NEXT_PUBLIC_API_BASE_PATH
 
 ```js
 module.exports = {
-    // 接口代理
-    async rewrites() {
-        return [{
-            source: "/blog/:path*",
-            destination: `${process.env.NEXT_PUBLIC_API_HOST}/:path*`,
-        }, ];
-    },
-}
+  // 接口代理
+  async rewrites() {
+    return [
+      {
+        source: "/blog/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_HOST}/:path*`,
+      },
+    ];
+  },
+};
 ```
 
 此时开发环境将代理到本地8000端口上, 而生产环境则代理到对应后端服务上
@@ -189,7 +191,7 @@ package.json添加如下命令
 ## 问题
 
 1. 暂时没有购买域名, 因此vercel部署的网站国内经常访问不到
-2. 为了实现全部线上操作的功能, 最终采用的**BSR**渲染方式并没有完全发挥**next**框架的优势, 因为前后端项目都部署在vercel上, 会有点子慢
+2. 为了实现全部线上操作的功能, 最终采用的**CSR**渲染方式并没有完全发挥**next**框架的优势, 因为前后端项目都部署在vercel上, 会有点子慢
 3. `bytemd`编辑器不错, 但是渲染器只是md渲染器, 没办法进行代码复制, 文章目录, 嵌入代码实例等功能
 
 ## 优化方案

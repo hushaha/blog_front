@@ -2,7 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { FC, useMemo } from "react";
 
-import { EditorMD, SEO, Toc } from "@/components";
+import { EditorMD, NotFound, SEO, Toc } from "@/components";
 import type { BlogItem } from "@/types";
 import { getImageUrl } from "@/utils";
 import sHttp from "@/utils/getStaticData";
@@ -19,14 +19,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   detail: BlogItem;
 }> = ({ params }: { params: Props }) => {
-  const detail = sHttp.getBlogDetailById(params.id) || {
-    id: params.id,
-    title: "",
-    content: "",
-    desc: "",
-    createTime: "",
-    updateTime: "",
-  };
+  const detail = sHttp.getBlogDetailById(params.id);
   return { props: { detail } };
 };
 
@@ -34,11 +27,13 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
   moHiddenLayout: boolean;
 } = ({ detail }) => {
   const coverImg = useMemo(
-    () => (detail.cover ? getImageUrl(detail.cover, "cover") : ""),
-    [detail.cover],
+    () => (detail?.cover ? getImageUrl(detail.cover, "cover") : ""),
+    [detail?.cover],
   );
 
-  return (
+  return !detail ? (
+    <NotFound />
+  ) : (
     <div className="flex justify-center gap-10">
       <SEO
         title={detail?.title}
@@ -64,11 +59,13 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
             )}
           </div>
         </div>
-        <img
-          src={coverImg}
-          alt={detail.title}
-          className="q-img mt-8 h-auto w-full"
-        />
+        {!!coverImg && (
+          <img
+            src={coverImg}
+            alt={detail.title}
+            className="q-img mt-8 h-auto w-full"
+          />
+        )}
         <EditorMD onlyRead value={detail?.content} className="mt-12" />
       </div>
       <div className="sticky top-6 hidden h-fit w-80 shrink-0 lg:block">

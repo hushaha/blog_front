@@ -10,6 +10,9 @@ class StaticData {
 
   private cacheObj = new Map();
 
+  // 匹配md文档配置正则
+  private transConfigRegx = /---\r?\n([\s\S]*)\r?\n---/;
+
   private getCache(key: string) {
     if (this.cacheObj.has(key)) {
       return this.cacheObj.get(key);
@@ -41,19 +44,19 @@ class StaticData {
   }
 
   private getMDConfig(file: string) {
-    return file.match(/---\n([\s\S]*)\n---/)?.[1]?.split("\n");
+    return file.match(this.transConfigRegx)?.[1]?.split(/\r?\n/);
   }
 
   private getMDContent(file: string) {
-    return file.replace(/---\n([\s\S]*)\n---/, "");
+    return file.replace(this.transConfigRegx, "");
   }
 
   /**
    * 获取md文档解析字符串
    * @param file 整个文档内容
-   * @returns {BlogItem}
+   * @returns {string}
    */
-  private getMDDesc(file: string) {
+  private getMDDesc(file: string): string {
     return this.getMDContent(file)?.replace(/[\n #`-]/g, "");
   }
 
@@ -82,7 +85,7 @@ class StaticData {
         if (key === "tag") {
           value = value.replaceAll(" ", "");
         }
-        
+
         acc[key.trim()] = value.trim();
         return acc;
       }, fileConfig);
