@@ -112,7 +112,8 @@
       overflow-x: auto;
       color: #333;
       background: #f8f8f8;
-      padding-right: 1.5rem;
+      padding-right: 1.5em;
+      border-radius: 0.2em;
     }
 
     .markdown-body a {

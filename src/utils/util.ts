@@ -87,10 +87,26 @@ export const copyToClipboard = (text: any) => {
 /**
  * 获取图片地址
  * @param name 图片名称
- * @param type 图片类型 cover / ... 
+ * @param type 图片类型 cover / ...
  * @returns 图片地址
  */
 export const getImageUrl = (name: string, type?: string) => {
   const u = !type ? name : `${type}/${name}`;
   return `/images/${u}`;
+};
+
+/**
+ * 扁平化数组
+ * @param arr 数组
+ * @param children 子数组
+ * @returns 扁平化后的数组
+ */
+export const flatArr = <T>(arr: T[], children: string = "children"): T[] => {
+  return arr.reduce((pre, cur) => {
+    pre.push(cur);
+    if (Array.isArray(cur[children])) {
+      pre.push(...flatArr(cur[children], children));
+    }
+    return pre;
+  }, []);
 };

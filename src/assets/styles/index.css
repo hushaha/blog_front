@@ -1,9 +1,6 @@
 /* 皮肤样式 */
 @import "./theme/index.css";
 
-/* base默认样式 */
-@import "./base.css";
-
 /* 动画样式 */
 @import "./animation.css";
 
@@ -12,3 +9,6 @@
 
 /* 首页样式 */
 @import "./page/index.css";
+
+/* base默认样式 */
+@import "./base.css";

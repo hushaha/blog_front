@@ -3,7 +3,7 @@ title: vercel+next搭建服务端渲染博客(CSR)
 createTime: 2023-08-01
 updateTime: 2023-08-01
 authors: hush
-tag: blog, Next, mongodb, TailwindCSS
+tag: blog, Next, TailwindCSS
 cover: next.png
 ---
 

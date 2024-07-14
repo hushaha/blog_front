@@ -17,9 +17,9 @@ const BlogDesc: FC<Props> = ({ item }) => {
   );
 
   return (
-    <div className="q-card flex gap-8">
+    <div className="q-bg-cpt sm:q-card flex flex-col gap-0 rounded-lg sm:flex-row sm:gap-8 sm:p-0">
       {item.cover && (
-        <div className="flex w-40 shrink-0 items-center">
+        <div className="flex w-full shrink-0 items-center sm:w-40">
           <Link href="/blog/[id]" as={`/blog/${item.id}`} passHref>
             <div className="overflow-hidden rounded">
               <img
@@ -31,8 +31,8 @@ const BlogDesc: FC<Props> = ({ item }) => {
           </Link>
         </div>
       )}
-      <div>
-        <div className="flex items-center justify-between">
+      <div className="p-6 pt-4 sm:p-0">
+        <div className="hidden items-center justify-between sm:flex">
           <span className="q-secondary font-light">{item.createTime}</span>
         </div>
         <Link href="/blog/[id]" as={`/blog/${item.id}`} passHref>
