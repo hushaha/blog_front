@@ -17,7 +17,7 @@ const BlogDesc: FC<Props> = ({ item }) => {
   );
 
   return (
-    <div className="q-bg-cpt sm:q-card flex flex-col gap-0 rounded-lg sm:flex-row sm:gap-8 sm:p-0">
+    <div className="q-bg-cpt sm:q-card flex flex-col gap-0 rounded-lg sm:flex-row sm:gap-8">
       {item.cover && (
         <div className="flex w-full shrink-0 items-center sm:w-40">
           <Link href="/blog/[id]" as={`/blog/${item.id}`} passHref>
