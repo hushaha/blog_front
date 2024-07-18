@@ -63,6 +63,7 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
           <img
             src={coverImg}
             alt={detail.title}
+            draggable={false}
             className="q-img mt-8 h-auto w-full"
           />
         )}

@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <nav className="q-bg-cpt px-6 py-3 shadow">
-      <div className="container mx-auto flex max-w-6xl items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between">
         <Link href="/" passHref>
           <a className="text-xl font-bold sm:text-2xl">
             <Logo />

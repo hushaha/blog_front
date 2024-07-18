@@ -22,4 +22,7 @@
   --warning-color: #fbc02d;
   /* error */
   --error-color: #d32f2f;
+
+  /* scrollbar */
+  --scrollbar-color: #0003;
 }

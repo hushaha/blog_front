@@ -17,7 +17,7 @@ const BlogDesc: FC<Props> = ({ item }) => {
   );
 
   return (
-    <div className="q-bg-cpt sm:q-card flex flex-col gap-0 rounded-lg sm:flex-row sm:gap-8">
+    <div className="q-card flex flex-col gap-0 rounded-lg p-0 sm:flex-row sm:gap-8 sm:p-6 sm:px-10">
       {item.cover && (
         <div className="flex w-full shrink-0 items-center sm:w-40">
           <Link href="/blog/[id]" as={`/blog/${item.id}`} passHref>
@@ -25,6 +25,7 @@ const BlogDesc: FC<Props> = ({ item }) => {
               <img
                 src={coverImg}
                 alt={item.title}
+                draggable={false}
                 className="q-img h-auto w-full cursor-pointer duration-200 hover:scale-125"
               />
             </div>

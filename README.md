@@ -6,4 +6,4 @@
 
 ### 博客地址
 
-[博客地址](https://q-blog-front.vercel.app)
+[博客地址](https://blog.hushaha.top)
