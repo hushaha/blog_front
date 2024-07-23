@@ -26,6 +26,17 @@
       color: #333;
     }
 
+    .markdown-body .numbered-code-line::before {
+      content: attr(data-line-number);
+
+      margin-right: 16px;
+      width: 1rem;
+      color: #333;
+      text-align: right;
+
+      display: inline-block;
+    }
+
     .markdown-body h1,
     .markdown-body h2,
     .markdown-body h3,

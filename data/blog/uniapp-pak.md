@@ -1,9 +1,10 @@
 ---
-title: uniapp打包安卓和ios
+title: uniapp打包安卓和iOS
 createTime: 2022-09-01
 updateTime: 2022-09-01
 authors: hush
-tag: uniapp, android, ios
+tag: uniapp, android, iOS
+cover: uniapp-pak.jpg
 ---
 
 ## 基础配置
@@ -54,7 +55,7 @@ openssl x509 -inform der -in output.crt -noout -fingerprint -md5
 
 点击 `发行/云打包` , 选择 `证书文件(.keystore)` , 输入 `证书别名(alias)` , 创建证书时的密码即可
 
-## IOS打包
+## iOS打包
 
 ### 创建Csr文件
 

@@ -1,5 +1,6 @@
 import type { BytemdPlugin } from "bytemd";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeHighlightCodeLines from "rehype-highlight-code-lines";
 import rehypeSlug from "rehype-slug";
 
 import { message } from "@/components";
@@ -16,7 +17,11 @@ export const autolinkHeadingsPlugin = (): BytemdPlugin => {
       processor
         .use(rehypeSlug)
         // @ts-ignore
-        .use(rehypeAutolinkHeadings, { behavior: "append" }),
+        .use(rehypeAutolinkHeadings, { behavior: "append" })
+        .use(rehypeHighlightCodeLines, {
+          showLineNumbers: true,
+          lineContainerTagName: "div",
+        }),
   };
 };
 

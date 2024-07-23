@@ -4,6 +4,7 @@ createTime: 2022-08-03
 updateTime: 2022-08-03
 authors: hush
 tag: cli, react, typescript, vite
+cover: vite-react-ts-cli.jpg
 ---
 
 ## 前言
@@ -576,4 +577,4 @@ module.exports = {
 
 ## 参考
 
-git仓库地址: https://github.com/quechenping/vite-react-ts-cli/tree/master
+git仓库地址: https://github.com/quechenping/vite-react-cli/tree/master

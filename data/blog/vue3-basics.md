@@ -4,6 +4,7 @@ createTime: 2022-05-01
 updateTime: 2022-05-01
 authors: hush
 tag: vue3
+cover: vue3-basics.jpg
 ---
 
 ## 前言

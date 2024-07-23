@@ -4,17 +4,17 @@ createTime: 2023-08-01
 updateTime: 2023-08-01
 authors: hush
 tag: blog, Next, TailwindCSS
-cover: next.png
+cover: blog-csr.jpg
 ---
 
 准备做一个博客, 预先准备使用 `React` 编写博客, 根据小马哥的博客得到的启发, 直接用 `Next + TailwindCSS` 编写该博客, 因此开始学习下预备知识.
 
 ## 技术栈
 
-- 使用 `Next+TailwindCSS` 开发前端页面,
-- 用 `node+mongodb` 作为后台, 基于功能量比较少, 于是选择 `express` 作为服务端框架
-- 使用 `vercel` 进行前端后端静态代码部署
-- 数据库使用 `MongoDB Cloud` 免费存储
+* 使用 `Next+TailwindCSS` 开发前端页面, 
+* 用 `node+mongodb` 作为后台, 基于功能量比较少, 于是选择 `express` 作为服务端框架
+* 使用 `vercel` 进行前端后端静态代码部署
+* 数据库使用 `MongoDB Cloud` 免费存储
 
 ### TailwindCSS
 
@@ -60,15 +60,16 @@ cover: next.png
 
 ### 后端架构
 
+https://blog.csdn.net/weixin_39278265/article/details/112366908
 后端通过 `mongoose` 操作数据库, 通过 `jsonwebtoken` 生成token对用户进行权限校验
 
 这里将目录结构分配为如下格式
 
 ```bash
 |-- src
-    |-- db  				# 表结构
-    |-- router    	# 路由
-    |-- service    	# 操作数据库方法
+    |-- db          # 表结构
+    |-- router      # 路由
+    |-- service     # 操作数据库方法
     |-- test        # 测试
     |-- utils       # 工具库
 ```
@@ -84,8 +85,8 @@ POST http://127.0.0.1:8000/login
 content-type: application/json
 
 {
-    "name":"test",
-    "password":"123"
+  "name":"test",
+  "password":"123"
 }
 ```
 
@@ -119,15 +120,13 @@ baseURL: process.env.NEXT_PUBLIC_API_BASE_PATH
 
 ```js
 module.exports = {
-  // 接口代理
-  async rewrites() {
-    return [
-      {
-        source: "/blog/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_HOST}/:path*`,
-      },
-    ];
-  },
+    // 接口代理
+    async rewrites() {
+        return [{
+            source: "/blog/:path*",
+            destination: `${process.env.NEXT_PUBLIC_API_HOST}/:path*`,
+        }];
+    },
 };
 ```
 
@@ -139,9 +138,9 @@ package.json添加如下命令
 
 ```json
 "script": {
-	"dev": "nodemon index.js",
- 	"start": "node index.js",
- 	"build": "node index.js",
+  "dev": "nodemon index.js",
+  "start": "node index.js",
+  "build": "node index.js",
 }
 ```
 
@@ -190,17 +189,20 @@ package.json添加如下命令
 
 ## 问题
 
-1. 暂时没有购买域名, 因此vercel部署的网站国内经常访问不到
-2. 为了实现全部线上操作的功能, 最终采用的**CSR**渲染方式并没有完全发挥**next**框架的优势, 因为前后端项目都部署在vercel上, 会有点子慢
-3. `bytemd`编辑器不错, 但是渲染器只是md渲染器, 没办法进行代码复制, 文章目录, 嵌入代码实例等功能
+1. 为了实现全部线上操作的功能, 最终采用的**CSR**渲染方式并没有完全发挥**next**框架的优势, 因为前后端项目都部署在vercel上, 会有点子慢
+2. `bytemd`编辑器不错, 但是渲染器只是md渲染器, 没办法进行代码复制, 文章目录, 嵌入代码示例等功能
 
 ## 优化方案
 
-1. 购买个域名代理一下
-2. 再对比下后续维护方式, 如果采用SSG方式,纯静态页面渲染, 只有点赞阅读量评论等通过后台管理, 则会更提高访问速度, 只是每次更新文章都需要提交代码
+1. 再对比下后续维护方式, 如果采用**SSG**方式,纯静态页面渲染, 只有点赞阅读量评论等通过后台管理, 则会更提高访问速度, 只是每次更新文章都需要提交代码
+2. 编写插件渲染器, 添加代码复制功能, 添加目录功能
 
 ## 链接
 
-https://maqib.cn/blog/Refactoring-my-blog-using-NextJS-and-TailwindCSS
+[马老师博客地址](https://maqib.cn/blog/Refactoring-my-blog-using-NextJS-and-TailwindCSS)
 
-https://blog.hushaha.top
+[博客地址](https://blog.hushaha.top)
+
+[前端git仓库地址](https://github.com/quechenping/blog_front)
+
+[后端git仓库地址](https://github.com/quechenping/blog_backend)

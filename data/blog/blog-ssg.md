@@ -5,6 +5,7 @@ updateTime: 2023-09-01
 authors: hush
 tag: blog, Next, TailwindCSS
 isDrafts: true
+cover: blog-ssg.jpg
 ---
 
 ## 前言
