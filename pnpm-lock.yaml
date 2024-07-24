@@ -11,9 +11,6 @@ importers:
       '@bytemd/plugin-breaks':
         specifier: ^1.10.13
         version: 1.21.0(bytemd@1.21.0)
-      '@bytemd/plugin-footnotes':
-        specifier: ^1.10.13
-        version: 1.12.4(bytemd@1.21.0)
       '@bytemd/plugin-gemoji':
         specifier: ^1.10.13
         version: 1.21.0(bytemd@1.21.0)
@@ -62,9 +59,6 @@ importers:
       react-dom:
         specifier: 17.0.2
         version: 17.0.2(react@17.0.2)
-      rehype-autolink-headings:
-        specifier: ^7.1.0
-        version: 7.1.0
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0
@@ -799,12 +793,6 @@ packages:
     peerDependencies:
       bytemd: ^1.5.0
 
-  '@bytemd/plugin-footnotes@1.12.4':
-    resolution: {integrity: sha512-wyj3UkAxzx9lg47Esc5W/co2k9YA5MOHAPQkUo0dX0gF8vydSuc1FRx3w9Q3N3ILT3rTOzmp97FaqsUmThmktA==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-    peerDependencies:
-      bytemd: ^1.5.0
-
   '@bytemd/plugin-gemoji@1.21.0':
     resolution: {integrity: sha512-/u90E0xHM0SmK5nt+c82UYtgm+ECq16ofp+bi/KZnzoq2vzqscflxxMRz59u2t3UejFpCMaqdIcnfzn0/eYvsA==}
     peerDependencies:
@@ -1189,9 +1177,6 @@ packages:
   '@typescript-eslint/visitor-keys@4.33.0':
     resolution: {integrity: sha512-uqi/2aSz9g2ftcHWf8uLPJA70rUv6yuMW5Bohw+bwcuzaxQIHaKFZCKGoGXIrc9vkTJ3+0txM73K0Hq3d5wgIg==}
     engines: {node: ^8.10.0 || ^10.13.0 || >=11.10.1}
-
-  '@ungap/structured-clone@1.2.0':
-    resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2193,9 +2178,6 @@ packages:
   hast-util-is-element@2.1.3:
     resolution: {integrity: sha512-O1bKah6mhgEq2WtVMk+Ta5K7pPMqsBBlmzysLdcwKVrqzZQ0CHqUPiIVspNhAG1rvxpvJjtGee17XfauZYKqVA==}
 
-  hast-util-is-element@3.0.0:
-    resolution: {integrity: sha512-Val9mnv2IWpLbNPqc/pUem+a7Ipj2aHacCwgNfTiK0vJKl0LF+4Ba4+v1oPHFpf3bLYmreq0/l3Gud9S5OH42g==}
-
   hast-util-parse-selector@3.1.1:
     resolution: {integrity: sha512-jdlwBjEexy1oGz0aJ2f4GKMaVKkA9jwjr4MjAAI22E5fM/TXVZHuS5OpONtdeIkRKqAaryQ2E9xNQxijoThSZA==}
 
@@ -3131,9 +3113,6 @@ packages:
   regjsparser@0.9.1:
     resolution: {integrity: sha512-dQUtn90WanSNl+7mQKcXAgZxvUe7Z0SqXlgzv0za4LwiUhyzBC58yQO3liFoUgu8GiJVInAhJjkj1N0EtQ5nkQ==}
     hasBin: true
-
-  rehype-autolink-headings@7.1.0:
-    resolution: {integrity: sha512-rItO/pSdvnvsP4QRB1pmPiNHUskikqtPojZKJPPPAVx9Hj8i8TwMBhofrrAYRhYOOBZH9tgmG5lPqDLuIWPWmw==}
 
   rehype-highlight-code-lines@1.0.4:
     resolution: {integrity: sha512-sDX8HZLfx+uFXGYP56XWR1pwt2tiQA6C/evATfLZPFD88EePKk+uzhwprLSxv/QHYWkAW6tLAgkTd23bd+BUaQ==}
@@ -4527,10 +4506,6 @@ snapshots:
       bytemd: 1.21.0
       remark-breaks: 3.0.3
 
-  '@bytemd/plugin-footnotes@1.12.4(bytemd@1.21.0)':
-    dependencies:
-      bytemd: 1.21.0
-
   '@bytemd/plugin-gemoji@1.21.0(bytemd@1.21.0)':
     dependencies:
       bytemd: 1.21.0
@@ -4921,8 +4896,6 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 4.33.0
       eslint-visitor-keys: 2.1.0
-
-  '@ungap/structured-clone@1.2.0': {}
 
   acorn-jsx@5.3.2(acorn@7.4.1):
     dependencies:
@@ -6175,10 +6148,6 @@ snapshots:
       '@types/hast': 2.3.10
       '@types/unist': 2.0.10
 
-  hast-util-is-element@3.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-
   hast-util-parse-selector@3.1.1:
     dependencies:
       '@types/hast': 2.3.10
@@ -7332,15 +7301,6 @@ snapshots:
   regjsparser@0.9.1:
     dependencies:
       jsesc: 0.5.0
-
-  rehype-autolink-headings@7.1.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      '@ungap/structured-clone': 1.2.0
-      hast-util-heading-rank: 3.0.0
-      hast-util-is-element: 3.0.0
-      unified: 11.0.4
-      unist-util-visit: 5.0.0
 
   rehype-highlight-code-lines@1.0.4:
     dependencies:

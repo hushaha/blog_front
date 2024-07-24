@@ -5,7 +5,7 @@ import { unified } from "unified";
 
 import { TocTree } from "@/types";
 
-import { debounce, flatArr, throttle } from "./util";
+import { flatArr, throttle } from "./util";
 
 /**
  * 获取目录树

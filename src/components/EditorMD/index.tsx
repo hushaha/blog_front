@@ -1,13 +1,12 @@
 import "bytemd/dist/index.min.css";
 import "highlight.js/styles/atom-one-dark.min.css";
 
-import footnotes from "@bytemd/plugin-footnotes";
+import breaks from "@bytemd/plugin-breaks";
 import gemoji from "@bytemd/plugin-gemoji";
 import gfm from "@bytemd/plugin-gfm";
 import gfmZhHans from "@bytemd/plugin-gfm/locales/zh_Hans.json";
 import highlightSSR from "@bytemd/plugin-highlight-ssr";
 import mediumZoom from "@bytemd/plugin-medium-zoom";
-import mermaid from "@bytemd/plugin-mermaid";
 import { Editor, Viewer } from "@bytemd/react";
 import zhHans from "bytemd/locales/zh_Hans.json";
 import {
@@ -18,17 +17,23 @@ import {
   useState,
 } from "react";
 
-import { autolinkHeadingsPlugin, codeCopyPlugin } from "@/utils/bytemdPlugin";
+import {
+  autolinkHeadingsPlugin,
+  codeCopyPlugin,
+  highlightCodeLinesPlugin,
+  targetBlankLink,
+} from "@/utils/bytemdPlugin";
 
 const plugins = [
-  footnotes(),
+  breaks(),
   gemoji(),
+  gfm({ locale: gfmZhHans }),
   highlightSSR(),
   mediumZoom(),
-  mermaid(),
-  gfm({ locale: gfmZhHans }),
   autolinkHeadingsPlugin(),
   codeCopyPlugin(),
+  highlightCodeLinesPlugin(),
+  targetBlankLink(),
 ];
 
 type EditorProps = {

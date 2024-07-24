@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import fs from "fs";
 import path from "path";
 
@@ -57,7 +58,7 @@ class StaticData {
    * @returns {string}
    */
   private getMDDesc(file: string): string {
-    return this.getMDContent(file)?.replace(/[\n #`-]/g, "");
+    return this.getMDContent(file)?.replace(/[\n \*#`-]/g, "");
   }
 
   /**
@@ -106,7 +107,10 @@ class StaticData {
     const folder = this.getFolderByName("blog");
     const blogList = folder
       .map((name) => this.getMdConfigById(this.getFileId(name)))
-      .filter((it) => !it.isDrafts);
+      .filter((it) => !it.isDrafts)
+      .sort((a, b) => {
+        return dayjs(b.createTime).valueOf() - dayjs(a.createTime).valueOf();
+      });
 
     this.setCache("blogList", blogList);
     return blogList;

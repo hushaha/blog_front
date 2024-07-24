@@ -26,7 +26,7 @@ cover: vite-react-ts-cli.jpg
 
    先执行如下命令
 
-```shell
+```bash
    pnpm create vite
 ```
 
@@ -34,14 +34,14 @@ cover: vite-react-ts-cli.jpg
 
 2. 选择使用 `pnpm` 管理包工具，执行如下命令即安装依赖且启动项目服务
 
-```shell
+```bash
    pnpm i
    pnpm dev
 ```
 
 3. 删除多余文件, 只保留 `main.tsx`、`App.tsx` 文件,并移除tsx文件中引用的各项依赖
 
-```shell
+```bash
 |-- src
     |-- App.tsx			# 主组件
     |-- main.tsx		# 入口文件
@@ -220,7 +220,7 @@ export default App;
 
 先安装antd
 
-```shell
+```bash
 pnpm add antd
 ```
 
@@ -247,7 +247,7 @@ export default Home
 
 执行如下命令安装 `vite-plugin-style-import` , `vite-plugin-style-import` 引用了 `consola` ，需要安装一下
 
-```shell
+```bash
 pnpm add -D vite-plugin-style-import consola
 ```
 
@@ -295,7 +295,7 @@ export default defineConfig({
 
 执行如下命令安装依赖
 
-```shell
+```bash
 pnpm add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-react eslint-plugin-react-hook eslint-import-resolver-typescript
 ```
 
@@ -323,7 +323,7 @@ extends: [
 
 对于代码中的import过多时顺序难以管理，使用 `eslint-plugin-import` 插件管理
 
-```shell
+```bash
 pnpm add -D eslint-plugin-import
 ```
 
@@ -519,19 +519,19 @@ pnpm add -D husky lint-staged @commitlint/cli @commitlint/config-angular
 
 控制台中执行如下命令初始化 `husky` ，会在根目录生成一个 `.husky` 目录且生成一个 `pre-commit` 文件
 
-```shell
+```bash
 npx husky install
 ```
 
 1. 生成一个`pre-commit`钩子
 
-```shell
+```bash
 npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
 pre-commit`文件应该如下
 
-```shell
+```bash
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
@@ -542,7 +542,7 @@ npx lint-staged
 
 2. 生成一个`commit-msg `钩子
 
-```shell
+```bash
 npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"
 ```
 
