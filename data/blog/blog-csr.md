@@ -32,6 +32,20 @@ cover: blog-csr.jpg
 
 ## 架构
 
+### 什么是CSR (客户端渲染)
+
+服务器提供静态HTML文件以及JS脚本等, 由浏览器去渲染最终页面
+
+**优点:**
+响应速度快: 一旦HTML文件加载完成, 浏览器就可以开始渲染页面, 而不需要等待服务器返回完整的渲染结果.  
+动态性强: 由于页面渲染在客户端进行, 因此可以方便地实现各种动态交互效果.
+前端部署简单: 只需要一个静态服务即可部署前端代码, 降低了部署成本.
+
+**缺点:**
+首屏加载时间长: 由于需要加载整个JavaScript包, 可能导致首屏加载时间较长, 特别是对于复杂的单页应用(SPA).  
+不利于SEO: 搜索引擎爬虫可能无法很好地解析由JavaScript动态生成的页面内容, 导致SEO效果较差.
+白屏时间: 在JavaScript代码加载和执行期间, 用户可能会看到空白的页面, 即所谓的"白屏时间".
+
 ### 为什么选择CSR
 
 这里我预想是采用CSR渲染, 因为希望博客系统能支持在线录入文档且发布, 能在线上进行增删改插, 全程线上操作
@@ -54,15 +68,12 @@ cover: blog-csr.jpg
     |-- utils       # 工具库
 ```
 
-因为采用tailwind作为样式库, 所以编写了部分公共组件, 比如 Dialog、Message、Editor 等
-
+因为采用tailwind作为样式库, 所以编写了部分公共组件, 比如 Dialog、Message、Editor 等  
 其中md编辑器及渲染器采用的是 `bytemd` , 仿照掘金的样式加点调整
 
 ### 后端架构
 
-https://blog.csdn.net/weixin_39278265/article/details/112366908
-后端通过 `mongoose` 操作数据库, 通过 `jsonwebtoken` 生成token对用户进行权限校验
-
+后端通过 `mongoose` 操作数据库, 通过 `jsonwebtoken` 生成token对用户进行权限校验  
 这里将目录结构分配为如下格式
 
 ```bash
@@ -90,8 +101,7 @@ content-type: application/json
 }
 ```
 
-此时vscode页面上会有一个 `Send Request` 按钮, 点击即可快速请求
-
+此时vscode页面上会有一个 `Send Request` 按钮, 点击即可快速请求  
 我将所有接口在此处存放一份, 方便快速调试
 
 ## 部署

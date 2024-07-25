@@ -1,7 +1,6 @@
 import "bytemd/dist/index.min.css";
 import "highlight.js/styles/atom-one-dark.min.css";
 
-import breaks from "@bytemd/plugin-breaks";
 import gemoji from "@bytemd/plugin-gemoji";
 import gfm from "@bytemd/plugin-gfm";
 import gfmZhHans from "@bytemd/plugin-gfm/locales/zh_Hans.json";
@@ -25,7 +24,6 @@ import {
 } from "@/utils/bytemdPlugin";
 
 const plugins = [
-  breaks(),
   gemoji(),
   gfm({ locale: gfmZhHans }),
   highlightSSR(),

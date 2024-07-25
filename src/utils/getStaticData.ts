@@ -100,7 +100,7 @@ class StaticData {
    * @returns {BlogItem[]}
    */
   getBlogList(): BlogItem[] {
-    if (this.getCache("blogList")) {
+    if (process.env.NODE_ENV === "production" && this.getCache("blogList")) {
       return this.getCache("blogList");
     }
 

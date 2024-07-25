@@ -43,7 +43,10 @@ export const codeCopyPlugin = (): BytemdPlugin => {
 
       // 往pre标签中append copy节点
       els.forEach((itm: HTMLElement) => {
-        itm.parentNode.appendChild(createCopyDom(itm.innerText));
+        // 只有code一个子节点，如果有多个子节点证明已经存在copy节点
+        if (itm.parentNode.childNodes.length === 1) {
+          itm.parentNode.appendChild(createCopyDom(itm.innerText));
+        }
       });
     },
   };

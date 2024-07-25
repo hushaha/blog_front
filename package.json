@@ -21,7 +21,6 @@
   "homepage": "https://github.com/quechenping/blog_front.git",
   "bugs": "https://github.com/quechenping/blog_front/issues",
   "dependencies": {
-    "@bytemd/plugin-breaks": "^1.10.13",
     "@bytemd/plugin-gemoji": "^1.10.13",
     "@bytemd/plugin-gfm": "^1.10.13",
     "@bytemd/plugin-highlight": "^1.10.13",

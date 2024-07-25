@@ -93,7 +93,7 @@ openssl x509 -inform der -in output.crt -noout -fingerprint -md5
 
 包名的格式比如下面的：
 
-```undefined
+```bash
 com.yyyyy.xxxx
 ```
 

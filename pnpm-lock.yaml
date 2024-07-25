@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@bytemd/plugin-breaks':
-        specifier: ^1.10.13
-        version: 1.21.0(bytemd@1.21.0)
       '@bytemd/plugin-gemoji':
         specifier: ^1.10.13
         version: 1.21.0(bytemd@1.21.0)
@@ -787,11 +784,6 @@ packages:
 
   '@braintree/sanitize-url@6.0.4':
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
-
-  '@bytemd/plugin-breaks@1.21.0':
-    resolution: {integrity: sha512-bDGTsePltjdBFOks1fjJOWAQs/8ZtkCWAOo/ogtW4ZTphouAt2iYpLFy6udsHyofECo2U6Sr4tgCwcxDUgv/4A==}
-    peerDependencies:
-      bytemd: ^1.5.0
 
   '@bytemd/plugin-gemoji@1.21.0':
     resolution: {integrity: sha512-/u90E0xHM0SmK5nt+c82UYtgm+ECq16ofp+bi/KZnzoq2vzqscflxxMRz59u2t3UejFpCMaqdIcnfzn0/eYvsA==}
@@ -2550,9 +2542,6 @@ packages:
   mdast-util-gfm@2.0.2:
     resolution: {integrity: sha512-qvZ608nBppZ4icQlhQQIAdc6S3Ffj9RGmzwUKUWuEICFnd1LVkN3EktF7ZHAgfcEdvZB5owU9tQgt99e2TlLjg==}
 
-  mdast-util-newline-to-break@1.0.0:
-    resolution: {integrity: sha512-491LcYv3gbGhhCrLoeALncQmega2xPh+m3gbsIhVsOX4sw85+ShLFPvPyibxc1Swx/6GtzxgVodq+cGa/47ULg==}
-
   mdast-util-phrasing@3.0.1:
     resolution: {integrity: sha512-WmI1gTXUBJo4/ZmSk79Wcb2HcjPJBzM1nlI/OUWA8yk2X9ik3ffNbBGsU+09BFmXaL1IBb9fiuvq6/KMiNycSg==}
 
@@ -3131,9 +3120,6 @@ packages:
 
   rehype-stringify@9.0.4:
     resolution: {integrity: sha512-Uk5xu1YKdqobe5XpSskwPvo1XeHUUucWEQSl8hTrXt5selvca1e8K1EZ37E6YoZ4BT8BCqCdVfQW7OfHfthtVQ==}
-
-  remark-breaks@3.0.3:
-    resolution: {integrity: sha512-C7VkvcUp1TPUc2eAYzsPdaUh8Xj4FSbQnYA5A9f80diApLZscTDeG7efiWP65W8hV2sEy3JuGVU0i6qr5D8Hug==}
 
   remark-extract-toc@1.1.0:
     resolution: {integrity: sha512-vfjGmkFcPqTvoEmGN/oKPnU57xlvXWJZKllqsUl8z2ZkSGjoQ1YoQGLt9cWH23AV3htJ2ED9l5NNukHigJP69Q==}
@@ -4500,11 +4486,6 @@ snapshots:
       to-fast-properties: 2.0.0
 
   '@braintree/sanitize-url@6.0.4': {}
-
-  '@bytemd/plugin-breaks@1.21.0(bytemd@1.21.0)':
-    dependencies:
-      bytemd: 1.21.0
-      remark-breaks: 3.0.3
 
   '@bytemd/plugin-gemoji@1.21.0(bytemd@1.21.0)':
     dependencies:
@@ -6576,11 +6557,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-newline-to-break@1.0.0:
-    dependencies:
-      '@types/mdast': 3.0.15
-      mdast-util-find-and-replace: 2.2.2
-
   mdast-util-phrasing@3.0.1:
     dependencies:
       '@types/mdast': 3.0.15
@@ -7341,12 +7317,6 @@ snapshots:
     dependencies:
       '@types/hast': 2.3.10
       hast-util-to-html: 8.0.4
-      unified: 10.1.2
-
-  remark-breaks@3.0.3:
-    dependencies:
-      '@types/mdast': 3.0.15
-      mdast-util-newline-to-break: 1.0.0
       unified: 10.1.2
 
   remark-extract-toc@1.1.0:
