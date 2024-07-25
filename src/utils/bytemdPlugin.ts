@@ -85,6 +85,7 @@ export const targetBlankLink = (): BytemdPlugin => {
 				// 非锚点链接
 				if (itm.getAttribute("href")[0] !== "#") {
 					itm.setAttribute("target", "_blank");
+					itm.setAttribute("rel", "noopener noreferrer");
 				}
 			});
 		},

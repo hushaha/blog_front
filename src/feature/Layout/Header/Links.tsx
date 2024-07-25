@@ -24,6 +24,14 @@ const Links: FC<Props> = ({ onClick = () => {} }) => {
 					标签
 				</a>
 			</Link>
+			<Link href="/my">
+				<a
+					className="q-color-primary-hover mx-4 font-bold"
+					onClick={() => onClick("tags")}
+				>
+					关于
+				</a>
+			</Link>
 		</>
 	);
 };
