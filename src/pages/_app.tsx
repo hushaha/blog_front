@@ -9,30 +9,30 @@ import { Login } from "@/feature";
 import { LoginProvider } from "@/provider";
 
 type CustomAppProps = {
-  Component: AppProps["Component"] & {
-    moHiddenLayout?: boolean; // 是否隐藏layout
-  };
-  pageProps: AppProps["pageProps"];
+	Component: AppProps["Component"] & {
+		moHiddenLayout?: boolean; // 是否隐藏layout
+	};
+	pageProps: AppProps["pageProps"];
 };
 
 const MyApp: FC<CustomAppProps> = ({ Component, pageProps }) => {
-  return (
-    <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no"
-        />
-      </Head>
-      <LoginProvider>
-        <Layout moHiddenLayout={Component.moHiddenLayout}>
-          <Component {...pageProps} />
-        </Layout>
+	return (
+		<>
+			<Head>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1, user-scalable=no"
+				/>
+			</Head>
+			<LoginProvider>
+				<Layout moHiddenLayout={Component.moHiddenLayout}>
+					<Component {...pageProps} />
+				</Layout>
 
-        <Login />
-      </LoginProvider>
-    </>
-  );
+				<Login />
+			</LoginProvider>
+		</>
+	);
 };
 
 export default MyApp;

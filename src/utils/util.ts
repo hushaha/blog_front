@@ -6,28 +6,28 @@
  * @returns
  */
 export const debounce = <T extends (...args: any[]) => void>(
-  fn: T,
-  delay?: number,
-  options?: {
-    immediate?: boolean;
-  },
+	fn: T,
+	delay?: number,
+	options?: {
+		immediate?: boolean;
+	},
 ): T => {
-  const { immediate = false } = options || {};
-  let timer = null;
+	const { immediate = false } = options || {};
+	let timer = null;
 
-  const debounceFn = function (...args: Parameters<T>) {
-    if (immediate && !timer) {
-      fn.apply(this, args);
-    }
+	const debounceFn = function (...args: Parameters<T>) {
+		if (immediate && !timer) {
+			fn.apply(this, args);
+		}
 
-    if (timer) clearTimeout(timer);
+		if (timer) clearTimeout(timer);
 
-    timer = setTimeout(() => {
-      fn.apply(this, args);
-    }, delay);
-  };
+		timer = setTimeout(() => {
+			fn.apply(this, args);
+		}, delay);
+	};
 
-  return debounceFn as T;
+	return debounceFn as T;
 };
 
 /**
@@ -38,29 +38,29 @@ export const debounce = <T extends (...args: any[]) => void>(
  * @returns
  */
 export const throttle = <T extends (...args: any[]) => void>(
-  fn: T,
-  delay?: number,
-  options?: {
-    immediate?: boolean;
-  },
+	fn: T,
+	delay?: number,
+	options?: {
+		immediate?: boolean;
+	},
 ): T => {
-  let timer = true;
-  let initImmediate = options?.immediate || false;
+	let timer = true;
+	let initImmediate = options?.immediate || false;
 
-  const throttleFn = function (...args: Parameters<T>) {
-    if (initImmediate) {
-      fn.apply(this, args);
-      initImmediate = false;
-    } else if (timer) {
-      timer = false;
-      setTimeout(() => {
-        fn.apply(this, args);
-        timer = true;
-      }, delay);
-    }
-  };
+	const throttleFn = function (...args: Parameters<T>) {
+		if (initImmediate) {
+			fn.apply(this, args);
+			initImmediate = false;
+		} else if (timer) {
+			timer = false;
+			setTimeout(() => {
+				fn.apply(this, args);
+				timer = true;
+			}, delay);
+		}
+	};
 
-  return throttleFn as T;
+	return throttleFn as T;
 };
 
 /**
@@ -68,12 +68,12 @@ export const throttle = <T extends (...args: any[]) => void>(
  * @returns {boolean} 是否是移动端
  */
 export const isMobile = ((): boolean => {
-  return (
-    typeof window !== "undefined" &&
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent,
-    )
-  );
+	return (
+		typeof window !== "undefined" &&
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent,
+		)
+	);
 })();
 
 /**
@@ -81,7 +81,7 @@ export const isMobile = ((): boolean => {
  * @param text 要复制的文本
  */
 export const copyToClipboard = (text: any) => {
-  navigator.clipboard.writeText(text);
+	navigator.clipboard.writeText(text);
 };
 
 /**
@@ -91,8 +91,8 @@ export const copyToClipboard = (text: any) => {
  * @returns 图片地址
  */
 export const getImageUrl = (name: string, type?: string) => {
-  const u = !type ? name : `${type}/${name}`;
-  return `/images/${u}`;
+	const u = !type ? name : `${type}/${name}`;
+	return `/images/${u}`;
 };
 
 /**
@@ -102,11 +102,11 @@ export const getImageUrl = (name: string, type?: string) => {
  * @returns 扁平化后的数组
  */
 export const flatArr = <T>(arr: T[], children: string = "children"): T[] => {
-  return arr.reduce((pre, cur) => {
-    pre.push(cur);
-    if (Array.isArray(cur[children])) {
-      pre.push(...flatArr(cur[children], children));
-    }
-    return pre;
-  }, []);
+	return arr.reduce((pre, cur) => {
+		pre.push(cur);
+		if (Array.isArray(cur[children])) {
+			pre.push(...flatArr(cur[children], children));
+		}
+		return pre;
+	}, []);
 };

@@ -17,9 +17,9 @@ cover: vue3-basics.jpg
 
 ```js
 const status = reactive({
-    data: [],
-    loading: false,
-})
+	data: [],
+	loading: false,
+});
 
 const data = ref([]);
 const loading = ref(false);
@@ -30,7 +30,7 @@ const loading = ref(false);
 1. `reactive` 只能代理对象
 2. `reactive` 不需要 `.value`
 
-为什么 `reactive` 只能代理对象? 
+为什么 `reactive` 只能代理对象?
 
 ### js内存管理
 
@@ -49,16 +49,16 @@ console.log(b); // 1
 ```js
 // eg2
 let obj = {
-    a: 1
-}
-let obj1 = obj
-obj.a = 2
-console.log(obj1.a) // 2
+	a: 1,
+};
+let obj1 = obj;
+obj.a = 2;
+console.log(obj1.a); // 2
 
 // eg3
 obj = {
-    a: 3
-}
+	a: 3,
+};
 console.log(obj1); // { a: 2 }
 ```
 
@@ -68,9 +68,9 @@ console.log(obj1); // { a: 2 }
 
 ### 堆栈
 
-* 基本数据类型保存在 `栈内存` 中
+- 基本数据类型保存在 `栈内存` 中
 
-* 引用类数据类型保存在 `堆内存` 中, 赋值时是赋值一个指针, 指针保存在 `栈内存` 中, 数据保存在 `堆内存` 中
+- 引用类数据类型保存在 `堆内存` 中, 赋值时是赋值一个指针, 指针保存在 `栈内存` 中, 数据保存在 `堆内存` 中
 
 **解释eg1:**  
 所以基本数据保存在 `栈内存` , 你对这个变量做的调整就是对这个栈内存中的数据做的处理, 所以将 `a` 变量赋值给 `b` 变量相当于把 `a` 的值复制给了 `b` , 此时栈内存中有两个变量, 只是他们的值相同
@@ -84,22 +84,22 @@ console.log(obj1); // { a: 2 }
 
 ```js
 let status = reactive({
-    data: [],
-    loading: false,
-})
+	data: [],
+	loading: false,
+});
 
-let loading = reactive(false) // Proxy
+let loading = reactive(false); // Proxy
 ```
 
 status其实就是由reactive方法接收一个参数obj, 然后返回出来的一个对象, 该对象是个proxy对象, 对内部的数据进行调整是会走响应式逻辑, 但是如果把status整个替换掉
 
 ```js
 status = {
-    data: [],
-    loading: false
-}
+	data: [],
+	loading: false,
+};
 
-loading = true
+loading = true;
 ```
 
 status将会丢失响应式, 因为指针丢了  
@@ -108,31 +108,31 @@ loading就是一个例子, 直接修改loading会导致指针丢失
 如果需要全部修改status怎么做?
 
 ```js
-status.data = []
-status.loading = false
+status.data = [];
+status.loading = false;
 ```
 
-### ref 
+### ref
 
 ref就是用来弥补上述缺点, 能代理任意类型数据  
 为什么可以代理所有数据, 因为他把数据放在value里, 你不会直接访问当顶层数据, 只能通过value去获取数据
 
 ```js
 const tableStatus = ref({
-    data: [],
-    loading: false,
-    total: 0,
-})
+	data: [],
+	loading: false,
+	total: 0,
+});
 
-const loading = ref(false)
-const data = ref([])
+const loading = ref(false);
+const data = ref([]);
 
 status.value = {
-    data: [],
-    loading: false,
-}
+	data: [],
+	loading: false,
+};
 
-loading.value = false
+loading.value = false;
 ```
 
 ### defineProperty & proxy 代理
@@ -149,59 +149,59 @@ proxy是es6提出的方法, es6之前可以使用defineProperty实现代理
 
 ```js
 const reactive = (target) => {
-    return new Proxy(target, {
-        get(target, key, receiver) {
-            const res = Reflect.get(target, key, receiver);
+	return new Proxy(target, {
+		get(target, key, receiver) {
+			const res = Reflect.get(target, key, receiver);
 
-            // 这里可以添加额外的日志或追踪依赖的逻辑
-            console.log(`Getting ${key}: `, res);
+			// 这里可以添加额外的日志或追踪依赖的逻辑
+			console.log(`Getting ${key}: `, res);
 
-            // 如果属性值是对象，可以递归使其也变为reactive
-            if (typeof res === 'object' && res !== null) {
-                return reactive(res);
-            }
+			// 如果属性值是对象，可以递归使其也变为reactive
+			if (typeof res === "object" && res !== null) {
+				return reactive(res);
+			}
 
-            return res;
-        },
-        set(target, key, value, receiver) {
-            const oldValue = target[key];
-            const result = Reflect.set(target, key, value, receiver);
+			return res;
+		},
+		set(target, key, value, receiver) {
+			const oldValue = target[key];
+			const result = Reflect.set(target, key, value, receiver);
 
-            // hasChanged方法
-            if (result && oldValue !== value) {
-                console.log(`Setting ${key}: `, value);
-            }
+			// hasChanged方法
+			if (result && oldValue !== value) {
+				console.log(`Setting ${key}: `, value);
+			}
 
-            return result;
-        },
-        deleteProperty(target, key, receiver) {
-            console.log(`delete key is ${key}`);
-            Reflect.deleteProperty(target, key, receiver);
-        }
-    });
-}
+			return result;
+		},
+		deleteProperty(target, key, receiver) {
+			console.log(`delete key is ${key}`);
+			Reflect.deleteProperty(target, key, receiver);
+		},
+	});
+};
 ```
 
 ### computed
 
 ```js
 const computed = (getterOrOptions) => {
-    let getter, setter;
+	let getter, setter;
 
-    if (typeof getterOrOptions === 'function') {
-        getter = getterOrOptions;
-        setter = () => {}
-    } else {
-        getter = getterOrOptions.get;
-        setter = getterOrOptions.set;
-    }
+	if (typeof getterOrOptions === "function") {
+		getter = getterOrOptions;
+		setter = () => {};
+	} else {
+		getter = getterOrOptions.get;
+		setter = getterOrOptions.set;
+	}
 
-    return new computedRef(getter, setter)
-}
+	return new computedRef(getter, setter);
+};
 
 const a = computed(() => {
-    return b.value + 1
-})
+	return b.value + 1;
+});
 ```
 
 ### watch
@@ -260,49 +260,49 @@ const reactive = (target) => {
 
 ```vue
 <template>
-  <table
-    :loading="tableStatus.loading"
-    :data="tableStatus.data"
-    :total="tableStatus.total"
-  />
+	<table
+		:loading="tableStatus.loading"
+		:data="tableStatus.data"
+		:total="tableStatus.total"
+	/>
 </template>
 
 <script setup lang="ts">
-  const tableStatus = ref<{
-    loading: boolean;
-    data: any[];
-  	total: number;
-  }>({
-    loading: false,
-    data: [],
-    total: 0
-  })
-  
-  const checkTableList = computed(() => {
-    return tableStatus.value.data.filter(i => i.checked);
-  })
+const tableStatus = ref<{
+	loading: boolean;
+	data: any[];
+	total: number;
+}>({
+	loading: false,
+	data: [],
+	total: 0,
+});
 
-  const getTableList = async (id: string) => {
-    tableStatus.value.loading = true;
-    const { data, total } = await getTableData(id);
-    tableStatus = {
-      loading: false,
-      data,
-      total
-    };
-  }
-  
-  // 有待商榷
-  watch(
-    () => props.id,
-    (newVal) => {
-    	getTableList(newVal);
-  	}, {
-      immediate: true
-    }
-  )
+const checkTableList = computed(() => {
+	return tableStatus.value.data.filter((i) => i.checked);
+});
+
+const getTableList = async (id: string) => {
+	tableStatus.value.loading = true;
+	const { data, total } = await getTableData(id);
+	tableStatus = {
+		loading: false,
+		data,
+		total,
+	};
+};
+
+// 有待商榷
+watch(
+	() => props.id,
+	(newVal) => {
+		getTableList(newVal);
+	},
+	{
+		immediate: true,
+	},
+);
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
 ```

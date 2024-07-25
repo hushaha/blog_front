@@ -64,7 +64,7 @@ openssl x509 -inform der -in output.crt -noout -fingerprint -md5
 
 ![](/images/uniapp-pak/ios01.jpg)
 
-3. 填写自己的邮箱和 `CA邮箱` ,  `CA邮箱` 为开发者账号邮箱, 下方请求需要选择存储到本地, 点击继续则会生成一个`CertificateSigningRequest.certSigningRequest` 文件
+3. 填写自己的邮箱和 `CA邮箱` , `CA邮箱` 为开发者账号邮箱, 下方请求需要选择存储到本地, 点击继续则会生成一个`CertificateSigningRequest.certSigningRequest` 文件
 
 ![](/images/uniapp-pak/ios02.jpg)
 

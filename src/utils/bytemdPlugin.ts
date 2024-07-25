@@ -11,9 +11,9 @@ import { copyToClipboard } from "./util";
  * @returns BytemdPlugin
  */
 export const autolinkHeadingsPlugin = (): BytemdPlugin => {
-  return {
-    rehype: (processor) => processor.use(rehypeSlug),
-  };
+	return {
+		rehype: (processor) => processor.use(rehypeSlug),
+	};
 };
 
 /**
@@ -21,35 +21,35 @@ export const autolinkHeadingsPlugin = (): BytemdPlugin => {
  * @returns BytemdPlugin
  */
 export const codeCopyPlugin = (): BytemdPlugin => {
-  const createCopyDom = (text: any): HTMLElement => {
-    const copyDom = document.createElement("div");
-    copyDom.className =
-      "q-color-primary-hover q-secondary icon-[ph--copy-bold] absolute right-2 top-2 cursor-pointer";
-    copyDom.addEventListener("click", () => {
-      copyToClipboard(text);
-      message.info({
-        title: "系统通知",
-        content: "复制成功",
-      });
-    });
-    return copyDom;
-  };
+	const createCopyDom = (text: any): HTMLElement => {
+		const copyDom = document.createElement("div");
+		copyDom.className =
+			"q-color-primary-hover q-secondary icon-[ph--copy-bold] absolute right-2 top-2 cursor-pointer";
+		copyDom.addEventListener("click", () => {
+			copyToClipboard(text);
+			message.info({
+				title: "系统通知",
+				content: "复制成功",
+			});
+		});
+		return copyDom;
+	};
 
-  return {
-    viewerEffect: ({ markdownBody }) => {
-      // 获取所有code标签
-      const els = markdownBody.querySelectorAll("pre>code");
-      if (els.length === 0) return;
+	return {
+		viewerEffect: ({ markdownBody }) => {
+			// 获取所有code标签
+			const els = markdownBody.querySelectorAll("pre>code");
+			if (els.length === 0) return;
 
-      // 往pre标签中append copy节点
-      els.forEach((itm: HTMLElement) => {
-        // 只有code一个子节点，如果有多个子节点证明已经存在copy节点
-        if (itm.parentNode.childNodes.length === 1) {
-          itm.parentNode.appendChild(createCopyDom(itm.innerText));
-        }
-      });
-    },
-  };
+			// 往pre标签中append copy节点
+			els.forEach((itm: HTMLElement) => {
+				// 只有code一个子节点，如果有多个子节点证明已经存在copy节点
+				if (itm.parentNode.childNodes.length === 1) {
+					itm.parentNode.appendChild(createCopyDom(itm.innerText));
+				}
+			});
+		},
+	};
 };
 
 /**
@@ -57,16 +57,16 @@ export const codeCopyPlugin = (): BytemdPlugin => {
  * @returns BytemdPlugin
  */
 export const highlightCodeLinesPlugin = (): BytemdPlugin => {
-  return {
-    rehype: (processor) =>
-      processor
-        // @ts-ignore
-        // 添加代码行号
-        .use(rehypeHighlightCodeLines, {
-          showLineNumbers: true,
-          lineContainerTagName: "div",
-        }),
-  };
+	return {
+		rehype: (processor) =>
+			processor
+				// @ts-ignore
+				// 添加代码行号
+				.use(rehypeHighlightCodeLines, {
+					showLineNumbers: true,
+					lineContainerTagName: "div",
+				}),
+	};
 };
 
 /**
@@ -74,19 +74,19 @@ export const highlightCodeLinesPlugin = (): BytemdPlugin => {
  * @returns BytemdPlugin
  */
 export const targetBlankLink = (): BytemdPlugin => {
-  return {
-    viewerEffect: ({ markdownBody }) => {
-      // 获取所有code标签
-      const els = markdownBody.querySelectorAll("a");
-      if (els.length === 0) return;
+	return {
+		viewerEffect: ({ markdownBody }) => {
+			// 获取所有code标签
+			const els = markdownBody.querySelectorAll("a");
+			if (els.length === 0) return;
 
-      // 往pre标签中append copy节点
-      els.forEach((itm: HTMLElement) => {
-        // 非锚点链接
-        if (itm.getAttribute("href")[0] !== "#") {
-          itm.setAttribute("target", "_blank");
-        }
-      });
-    },
-  };
+			// 往pre标签中append copy节点
+			els.forEach((itm: HTMLElement) => {
+				// 非锚点链接
+				if (itm.getAttribute("href")[0] !== "#") {
+					itm.setAttribute("target", "_blank");
+				}
+			});
+		},
+	};
 };

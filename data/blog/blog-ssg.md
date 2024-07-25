@@ -15,7 +15,7 @@ cover: blog-ssg.jpg
 
 ### SSG是什么 (静态站点生成)
 
-SSG（Static Site Generation）是一种在构建时生成静态HTML页面的技术. 在这种模式下, 开发者会编写一些模板文件和数据文件, 然后使用构建工具（如Hugo、Gatsby等）将这些文件转换为静态的HTML页面. 这些页面可以直接部署到服务器上, 而不需要服务器进行实时渲染. 
+SSG（Static Site Generation）是一种在构建时生成静态HTML页面的技术. 在这种模式下, 开发者会编写一些模板文件和数据文件, 然后使用构建工具（如Hugo、Gatsby等）将这些文件转换为静态的HTML页面. 这些页面可以直接部署到服务器上, 而不需要服务器进行实时渲染.
 
 **优点:**  
 性能卓越: 由于页面是静态的, 因此无需等待服务器渲染, 直接由浏览器加载显示, 具有出色的性能.  
@@ -30,8 +30,9 @@ SSG（Static Site Generation）是一种在构建时生成静态HTML页面的技
 ### 如何在Next中使用
 
 主要是两个方法:
-* **getStaticProps**  
-该方法是用来获取静态props数据, 会在build时运行一次然后生成html页面, 所以数据是build时就定死的数据, 该数据将会传给当前根组件. 所以该方法只能用于根组件  
+
+- **getStaticProps**  
+  该方法是用来获取静态props数据, 会在build时运行一次然后生成html页面, 所以数据是build时就定死的数据, 该数据将会传给当前根组件. 所以该方法只能用于根组件
 
 ```tsx
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -39,56 +40,60 @@ import { FC } from "react";
 import sHttp from "@/utils/getStaticData";
 
 export const getStaticProps: GetStaticProps<{
-  blogList: BlogItem[];
+	blogList: BlogItem[];
 }> = () => {
-  const blogList = sHttp.getBlogList();
-  const tagList = sHttp.getTagList();
-  return { props: { blogList } };
+	const blogList = sHttp.getBlogList();
+	const tagList = sHttp.getTagList();
+	return { props: { blogList } };
 };
 
-const BlogList: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogList }) => {
-  return <div></div>;
-}
+const BlogList: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+	blogList,
+}) => {
+	return <div></div>;
+};
 ```
 
-  
-* **getStaticPaths**  
-该方法是用来获取动态路由的所有可能性数组.   
-例如博客会有动态路由, 那动态路由的参数不同时, 页面数据也不同, 所以需要渲染出动态路由所有的页面, 因此需要使用getStaticPaths方法.
+- **getStaticPaths**  
+  该方法是用来获取动态路由的所有可能性数组.  
+  例如博客会有动态路由, 那动态路由的参数不同时, 页面数据也不同, 所以需要渲染出动态路由所有的页面, 因此需要使用getStaticPaths方法.
 
 ```tsx
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import sHttp from "@/utils/getStaticData";
 
 export const getStaticPaths = async () => {
-  const paths = sHttp.getBlogList().map((itm) => `/blog/${itm.id}`);
-  return { paths, fallback: true };
+	const paths = sHttp.getBlogList().map((itm) => `/blog/${itm.id}`);
+	return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps<{
-  detail: BlogItem;
+	detail: BlogItem;
 }> = ({ params }: { params: Props }) => {
-  const detail = sHttp.getBlogDetailById(params.id);
-  return { props: { detail } };
+	const detail = sHttp.getBlogDetailById(params.id);
+	return { props: { detail } };
 };
 
-const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ detail }) => {
-  return <div></div>;
-}
+const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+	detail,
+}) => {
+	return <div></div>;
+};
 ```
 
 fallback 有 3 个值
-* true  
-当访问的静态页面不存在时, 该页面将表现为 fallback: 'blocking', 在后台Next会去重新做请求渲染页面.  
-如果你的应用有大量依赖于数据的静态页面（例如非常大的电子商务网站）, 则 fallback: true 非常有用. 如果你想预渲染所有产品页面, 则构建将花费很长时间.  
-相反, 你可以静态生成一小部分页面, 并使用 fallback: true 来处理其余部分. 当有人请求尚未生成的页面时, 用户将看到带有加载指示器或骨架组件的页面.  
-不久之后, getStaticProps 完成, 页面将使用请求的数据渲染. 从现在开始, 每个请求同一页面的人都将获得静态预渲染的页面.  
 
-* false  
-未生成的页面访问 404
+- true  
+  当访问的静态页面不存在时, 该页面将表现为 fallback: 'blocking', 在后台Next会去重新做请求渲染页面.  
+  如果你的应用有大量依赖于数据的静态页面（例如非常大的电子商务网站）, 则 fallback: true 非常有用. 如果你想预渲染所有产品页面, 则构建将花费很长时间.  
+  相反, 你可以静态生成一小部分页面, 并使用 fallback: true 来处理其余部分. 当有人请求尚未生成的页面时, 用户将看到带有加载指示器或骨架组件的页面.  
+  不久之后, getStaticProps 完成, 页面将使用请求的数据渲染. 从现在开始, 每个请求同一页面的人都将获得静态预渲染的页面.
 
-* blocking  
-getStaticPaths 未返回的新路径将等待生成 HTML, 与 SSR 相同（因此会阻塞）, 然后缓存以供将来的请求使用, 因此每个路径仅发生一次. 
+- false  
+  未生成的页面访问 404
+
+- blocking  
+  getStaticPaths 未返回的新路径将等待生成 HTML, 与 SSR 相同（因此会阻塞）, 然后缓存以供将来的请求使用, 因此每个路径仅发生一次.
 
 ## 优化结果
 

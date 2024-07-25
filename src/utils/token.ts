@@ -4,7 +4,7 @@ import { TOKEN_NAME } from "@/config/constant";
  * 获取token
  */
 export const getToken = () => {
-  return window.localStorage.getItem(TOKEN_NAME);
+	return window.localStorage.getItem(TOKEN_NAME);
 };
 
 /**
@@ -12,5 +12,5 @@ export const getToken = () => {
  * @param token
  */
 export const setToken = (token: string) => {
-  window.localStorage.setItem(TOKEN_NAME, token);
+	window.localStorage.setItem(TOKEN_NAME, token);
 };

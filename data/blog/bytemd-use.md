@@ -14,13 +14,13 @@ ByteMD 是一个使用 Svelte 构建的 Markdown 编辑器组件. 它也可以�
 
 **特性如下:**
 
-* 轻量级且与框架无关
+- 轻量级且与框架无关
 
-* 易于扩展
+- 易于扩展
 
-* 默认安全
+- 默认安全
 
-* 兼容 SSR
+- 兼容 SSR
 
 因此本文介绍一下基本用法, 跟着这篇文章你能搭建出一个掘金同款md编辑器
 
@@ -36,10 +36,10 @@ pnpm add bytemd
 
 bytemd有两个组件: `Editor` 和 `Viewer` .
 `Editor` 顾名思义，是 Markdown 编辑器; `Viewer` 通常用于显示渲染的 Markdown 结果而无需编辑.
-在使用组件之前，记得导入CSS文件以确保样式正确: 
+在使用组件之前，记得导入CSS文件以确保样式正确:
 
 ```js
-import 'bytemd/dist/index.css'
+import "bytemd/dist/index.css";
 ```
 
 #### 使用示例
@@ -89,11 +89,11 @@ const EditorMD:FC<Props> = ({ onlyRead, defaultValue, onChange }) => {
 
 **编辑器**
 
-ByteMD Editor 默认高度为 `300px` . 可以使用 CSS 进行覆盖: 
+ByteMD Editor 默认高度为 `300px` . 可以使用 CSS 进行覆盖:
 
 ```css
 .bytemd {
-    height: calc(100vh - 200px);
+	height: calc(100vh - 200px);
 }
 ```
 
@@ -111,26 +111,26 @@ import "highlight.js/styles/atom-one-dark.min.css";
 
 #### 安装插件
 
-官方插件列表如下: 
+官方插件列表如下:
 
-| 插件名称                                                     | 插件备注                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [@bytemd/plugin-breaks](https://github.com/bytedance/bytemd/tree/main/packages/plugin-breaks) | 默认md渲染时硬换行需要双空格或者双回车, 该插件确保正常回车即可硬换行 |
-| [@bytemd/plugin-frontmatter](https://github.com/bytedance/bytemd/tree/main/packages/plugin-frontmatter) | 解析元数据                                                   |
-| [@bytemd/plugin-gemoji](https://github.com/bytedance/bytemd/tree/main/packages/plugin-gemoji) | 解析gemoji表情                                               |
-| [@bytemd/plugin-gfm](https://github.com/bytedance/bytemd/tree/main/packages/plugin-gfm) | 支持GFM(自动链接文字、删除、表格、任务列表)                  |
-| [@bytemd/plugin-highlight](https://github.com/bytedance/bytemd/tree/main/packages/plugin-highlight) | 代码高亮                                                     |
-| [@bytemd/plugin-highlight-ssr](https://github.com/bytedance/bytemd/tree/main/packages/plugin-highlight-ssr) | 代码高亮ssr版本                                              |
-| [@bytemd/plugin-math](https://github.com/bytedance/bytemd/tree/main/packages/plugin-math) | 支持数学公式                                                 |
-| [@bytemd/plugin-math-ssr](https://github.com/bytedance/bytemd/tree/main/packages/plugin-math-ssr) | 支持数学公式ssr版本                                          |
-| [@bytemd/plugin-medium-zoom](https://github.com/bytedance/bytemd/tree/main/packages/plugin-medium-zoom) | 支持点击图片放大预览                                         |
-| [@bytemd/plugin-mermaid](https://github.com/bytedance/bytemd/tree/main/packages/plugin-mermaid) | 支持流程图                                                   |
+| 插件名称                                                                                                    | 插件备注                                                             |
+| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [@bytemd/plugin-breaks](https://github.com/bytedance/bytemd/tree/main/packages/plugin-breaks)               | 默认md渲染时硬换行需要双空格或者双回车, 该插件确保正常回车即可硬换行 |
+| [@bytemd/plugin-frontmatter](https://github.com/bytedance/bytemd/tree/main/packages/plugin-frontmatter)     | 解析元数据                                                           |
+| [@bytemd/plugin-gemoji](https://github.com/bytedance/bytemd/tree/main/packages/plugin-gemoji)               | 解析gemoji表情                                                       |
+| [@bytemd/plugin-gfm](https://github.com/bytedance/bytemd/tree/main/packages/plugin-gfm)                     | 支持GFM(自动链接文字、删除、表格、任务列表)                          |
+| [@bytemd/plugin-highlight](https://github.com/bytedance/bytemd/tree/main/packages/plugin-highlight)         | 代码高亮                                                             |
+| [@bytemd/plugin-highlight-ssr](https://github.com/bytedance/bytemd/tree/main/packages/plugin-highlight-ssr) | 代码高亮ssr版本                                                      |
+| [@bytemd/plugin-math](https://github.com/bytedance/bytemd/tree/main/packages/plugin-math)                   | 支持数学公式                                                         |
+| [@bytemd/plugin-math-ssr](https://github.com/bytedance/bytemd/tree/main/packages/plugin-math-ssr)           | 支持数学公式ssr版本                                                  |
+| [@bytemd/plugin-medium-zoom](https://github.com/bytedance/bytemd/tree/main/packages/plugin-medium-zoom)     | 支持点击图片放大预览                                                 |
+| [@bytemd/plugin-mermaid](https://github.com/bytedance/bytemd/tree/main/packages/plugin-mermaid)             | 支持流程图                                                           |
 
 #### 自定义插件
 
 **官方文档提示如下:**
 
-ByteMD 使用 [remark](https://github.com/remarkjs/remark) 和 [rehype](https://github.com/rehypejs/rehype) 生态系统来处理 Markdown. 完整流程如下: 
+ByteMD 使用 [remark](https://github.com/remarkjs/remark) 和 [rehype](https://github.com/rehypejs/rehype) 生态系统来处理 Markdown. 完整流程如下:
 
 1. Markdown 文本被解析为[AST](https://github.com/syntax-tree/mdast)
 2. Markdown AST 可以通过多种[注释插件进行操作](https://github.com/remarkjs/remark/blob/main/doc/plugins.md)
@@ -140,7 +140,7 @@ ByteMD 使用 [remark](https://github.com/remarkjs/remark) 和 [rehype](https://
 6. HTML AST 被字符串化为 HTML
 7. HTML 渲染后的一些额外 DOM 操作
 
-它也可以描述为流程图: 
+它也可以描述为流程图:
 ![](/images/bytemd-use/flowchart.png)
 
 2、5、7步骤是通过ByteMD插件API进行用户定制的.
@@ -165,9 +165,9 @@ import type { BytemdPlugin } from "bytemd";
 import rehypeSlug from "rehype-slug";
 
 const autolinkHeadingsPlugin = (): BytemdPlugin => {
-  return {
-    rehype: (processor) => processor.use(rehypeSlug),
-  };
+	return {
+		rehype: (processor) => processor.use(rehypeSlug),
+	};
 };
 ```
 
@@ -179,14 +179,14 @@ import markdown from "remark-parse";
 import { unified } from "unified";
 
 const getTocTree = (val: string): TocTree => {
-  try {
-    const processor = unified().use(markdown, { commonmark: true }).use(toc);
-    const node = processor.parse(val);
-    const tree = processor.runSync(node);
-    return tree as unknown as TocTree;
-  } catch (error) {
-    return [];
-  }
+	try {
+		const processor = unified().use(markdown, { commonmark: true }).use(toc);
+		const node = processor.parse(val);
+		const tree = processor.runSync(node);
+		return tree as unknown as TocTree;
+	} catch (error) {
+		return [];
+	}
 };
 ```
 
@@ -204,33 +204,33 @@ bytemd默认渲染的出来的就是最简单的html，代码块是解析成 `pr
 import type { BytemdPlugin } from "bytemd";
 
 const codeCopyPlugin = (): BytemdPlugin => {
-  const createCopyDom = (text: any): HTMLElement => {
-    const copyDom = document.createElement("div");
-    copyDom.className = "icon-[ph--copy-bold] absolute right-2 top-2 cursor-pointer";
-    copyDom.addEventListener("click", () => {
-      copyToClipboard(text);
-      message.info({
-        title: "系统通知",
-        content: "复制成功",
-      });
-    });
-    return copyDom;
-  };
+	const createCopyDom = (text: any): HTMLElement => {
+		const copyDom = document.createElement("div");
+		copyDom.className =
+			"icon-[ph--copy-bold] absolute right-2 top-2 cursor-pointer";
+		copyDom.addEventListener("click", () => {
+			copyToClipboard(text);
+			message.info({
+				title: "系统通知",
+				content: "复制成功",
+			});
+		});
+		return copyDom;
+	};
 
-  return {
-    viewerEffect: ({ markdownBody }) => {
-      // 获取所有code标签
-      const els = markdownBody.querySelectorAll("pre>code");
-      if (els.length === 0) return;
+	return {
+		viewerEffect: ({ markdownBody }) => {
+			// 获取所有code标签
+			const els = markdownBody.querySelectorAll("pre>code");
+			if (els.length === 0) return;
 
-      // 往pre标签中append copy节点
-      els.forEach((itm: HTMLElement) => {
-        itm.parentNode.appendChild(createCopyDom(itm.innerText));
-      });
-    },
-  };
+			// 往pre标签中append copy节点
+			els.forEach((itm: HTMLElement) => {
+				itm.parentNode.appendChild(createCopyDom(itm.innerText));
+			});
+		},
+	};
 };
-
 ```
 
 ##### 添加代码块行号插件
@@ -244,16 +244,16 @@ import type { BytemdPlugin } from "bytemd";
 import rehypeHighlightCodeLines from "rehype-highlight-code-lines";
 
 const highlightCodeLinesPlugin = (): BytemdPlugin => {
-  return {
-    rehype: (processor) =>
-      processor
-        // @ts-ignore
-        // 添加代码行号
-        .use(rehypeHighlightCodeLines, {
-          showLineNumbers: true,
-          lineContainerTagName: "div",
-        }),
-  };
+	return {
+		rehype: (processor) =>
+			processor
+				// @ts-ignore
+				// 添加代码行号
+				.use(rehypeHighlightCodeLines, {
+					showLineNumbers: true,
+					lineContainerTagName: "div",
+				}),
+	};
 };
 ```
 
@@ -268,24 +268,28 @@ import gfm from "@bytemd/plugin-gfm";
 import gfmZhHans from "@bytemd/plugin-gfm/locales/zh_Hans.json";
 import highlightSSR from "@bytemd/plugin-highlight-ssr";
 import mediumZoom from "@bytemd/plugin-medium-zoom";
-import { autolinkHeadingsPlugin, codeCopyPlugin, highlightCodeLinesPlugin } from '@/bytemd-plugins'
+import {
+	autolinkHeadingsPlugin,
+	codeCopyPlugin,
+	highlightCodeLinesPlugin,
+} from "@/bytemd-plugins";
 
 const plugins = [
-  breaks(),
-  gemoji(),
-  gfm({ locale: gfmZhHans }),
-  highlightSSR(),
-  mediumZoom(),
-  autolinkHeadingsPlugin(),
-  codeCopyPlugin(),
-  highlightCodeLinesPlugin(),
+	breaks(),
+	gemoji(),
+	gfm({ locale: gfmZhHans }),
+	highlightSSR(),
+	mediumZoom(),
+	autolinkHeadingsPlugin(),
+	codeCopyPlugin(),
+	highlightCodeLinesPlugin(),
 ];
 ```
 
 #### Tips
 
 1. 目录中包含特殊字符可能导致锚点跳转失效  
-这里使用的是 `rehype-slug` 给标题添加id, id源于标签内容, 但是id中不能包含特殊字符, 因此需要将特殊字符替换为另一个关键字, 因此最好避免在标题中使用特殊字符
+   这里使用的是 `rehype-slug` 给标题添加id, id源于标签内容, 但是id中不能包含特殊字符, 因此需要将特殊字符替换为另一个关键字, 因此最好避免在标题中使用特殊字符
 
 ## 链接
 

@@ -7,51 +7,51 @@ import { BlogItem } from "@/types";
 import sHttp from "@/utils/getStaticData";
 
 type Props = {
-  tag: string;
+	tag: string;
 };
 
 export const getStaticPaths = async () => {
-  const paths = sHttp.getTagList().map((itm) => `/tags/${itm.name}`);
-  return { paths, fallback: true };
+	const paths = sHttp.getTagList().map((itm) => `/tags/${itm.name}`);
+	return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps<{
-  list: BlogItem[];
-  tag: string;
+	list: BlogItem[];
+	tag: string;
 }> = ({ params }: { params: Props }) => {
-  const res = sHttp.getBlogList();
-  const curList = res.filter((itm) => itm.tag?.includes(params.tag));
-  return { props: { list: curList, tag: params.tag } };
+	const res = sHttp.getBlogList();
+	const curList = res.filter((itm) => itm.tag?.includes(params.tag));
+	return { props: { list: curList, tag: params.tag } };
 };
 
 const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  list = [],
-  tag,
+	list = [],
+	tag,
 }) => {
-  const [curList, setCurList] = useState(() => list || []);
+	const [curList, setCurList] = useState(() => list || []);
 
-  const getBlogList = ({ title }) => {
-    if (!title) {
-      setCurList(list);
-      return;
-    }
+	const getBlogList = ({ title }) => {
+		if (!title) {
+			setCurList(list);
+			return;
+		}
 
-    const res = list.filter((it) =>
-      it.title.toLowerCase().includes(title.toLowerCase()),
-    );
-    setCurList(res);
-  };
+		const res = list.filter((it) =>
+			it.title.toLowerCase().includes(title.toLowerCase()),
+		);
+		setCurList(res);
+	};
 
-  const onSearch = (s: string) => {
-    getBlogList({ title: s });
-  };
+	const onSearch = (s: string) => {
+		getBlogList({ title: s });
+	};
 
-  return (
-    <div className="mx-auto max-w-4xl">
-      <SEO title={tag} />
-      <BlogList title={tag} list={curList} onSearch={onSearch} />
-    </div>
-  );
+	return (
+		<div className="mx-auto max-w-4xl">
+			<SEO title={tag} />
+			<BlogList title={tag} list={curList} onSearch={onSearch} />
+		</div>
+	);
 };
 
 export default Blog;

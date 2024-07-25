@@ -1,28 +1,28 @@
 :root {
-  /* 背景色 */
-  --bg-color: rgb(243 244 246);
-  /* 主色 */
-  --primary-color: #a855f7;
-  /* 文字主色 */
-  --text-color-main: #333333;
-  /* 文字辅助色 */
-  --text-color-secondary: rgb(115 115 115);
-  /* 边框色 */
-  --border-color: #e0e0e0;
-  /* 组件背景色 */
-  --bg-color-cpt: #fff;
-  /* 遮罩背景色 */
-  --mask-bg-color: rgba(0, 0, 0, 0.5);
+	/* 背景色 */
+	--bg-color: rgb(243 244 246);
+	/* 主色 */
+	--primary-color: #a855f7;
+	/* 文字主色 */
+	--text-color-main: #333333;
+	/* 文字辅助色 */
+	--text-color-secondary: rgb(115 115 115);
+	/* 边框色 */
+	--border-color: #e0e0e0;
+	/* 组件背景色 */
+	--bg-color-cpt: #fff;
+	/* 遮罩背景色 */
+	--mask-bg-color: rgba(0, 0, 0, 0.5);
 
-  /* info */
-  --info-color: #2196f3;
-  /* success */
-  --success-color: #4caf50;
-  /* warning */
-  --warning-color: #fbc02d;
-  /* error */
-  --error-color: #d32f2f;
+	/* info */
+	--info-color: #2196f3;
+	/* success */
+	--success-color: #4caf50;
+	/* warning */
+	--warning-color: #fbc02d;
+	/* error */
+	--error-color: #d32f2f;
 
-  /* scrollbar */
-  --scrollbar-color: #0003;
+	/* scrollbar */
+	--scrollbar-color: #0003;
 }

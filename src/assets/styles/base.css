@@ -2,25 +2,25 @@
 @tailwind utilities;
 
 @layer base {
-  html,
-  body {
-    @apply min-h-screen font-sans tracking-wider;
-    background-color: var(--bg-color);
-    color: var(--text-color-main);
+	html,
+	body {
+		@apply min-h-screen font-sans tracking-wider;
+		background-color: var(--bg-color);
+		color: var(--text-color-main);
 
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
+		::-webkit-scrollbar {
+			width: 8px;
+			height: 8px;
+		}
 
-    ::-webkit-scrollbar-thumb {
-      background-color: var(--scrollbar-color);
-      border-radius: 10px;
-      transition: all 0.2s ease-in-out;
-    }
+		::-webkit-scrollbar-thumb {
+			background-color: var(--scrollbar-color);
+			border-radius: 10px;
+			transition: all 0.2s ease-in-out;
+		}
 
-    ::-webkit-scrollbar-track {
-      border-radius: 10px;
-    }
-  }
+		::-webkit-scrollbar-track {
+			border-radius: 10px;
+		}
+	}
 }

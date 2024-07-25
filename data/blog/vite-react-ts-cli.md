@@ -81,12 +81,12 @@ pnpm add -D @types/node
 import { resolve } from "path";
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "./src"), // 路径别名
-    },
-    extensions: [".js", ".json", ".ts", "tsx"], // 使用路径别名时想要省略的后缀名，可以自己 增减
-  },
+	resolve: {
+		alias: {
+			"@": resolve(__dirname, "./src"), // 路径别名
+		},
+		extensions: [".js", ".json", ".ts", "tsx"], // 使用路径别名时想要省略的后缀名，可以自己 增减
+	},
 });
 ```
 
@@ -204,11 +204,11 @@ import { AppProvider } from "@/providers/app";
 import { AppRoutes } from "@/routes";
 
 function App() {
-  return (
-    <AppProvider>
-      <AppRoutes />
-    </AppProvider>
-  );
+	return (
+		<AppProvider>
+			<AppRoutes />
+		</AppProvider>
+	);
 }
 
 export default App;
@@ -459,7 +459,6 @@ husky插件的作用就是在git hook中添加操作, lint-staged则可以准确
 <type>(<scope>):
         <subject>
             <BLANK LINE>
-
                 <body>
                     <BLANK LINE>
                         <footer></footer>
@@ -471,27 +470,27 @@ husky插件的作用就是在git hook中添加操作, lint-staged则可以准确
 </type>
 ```
 
-* `<type>`代表某次提交的类型，比如是修复一个 bug 或是增加一个 feature，具体类型如下：
+- `<type>`代表某次提交的类型，比如是修复一个 bug 或是增加一个 feature，具体类型如下：
 
 | 类型     | 描述                                                   |
 | -------- | ------------------------------------------------------ |
 | feat     | 新增feature                                            |
 | fix      | 修复bug                                                |
 | docs     | 仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等; |
-| style    | 仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑; |
+| style    | 仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑;    |
 | refactor | 代码重构，没有加新功能或者修复bug                      |
 | perf     | 优化相关，比如提升性能、体验                           |
 | test     | 测试用例，包括单元测试、集成测试等                     |
 | chore    | 改变构建流程、或者增加依赖库、工具等                   |
 | revert   | 回滚到上一个版本                                       |
 
-* `scope`：说明commit影响的范围。scope依据项目而定，例如在业务项目中可以依据菜单或者功能模块划分，如果是组件库开发，则可以依据组件划分。
+- `scope`：说明commit影响的范围。scope依据项目而定，例如在业务项目中可以依据菜单或者功能模块划分，如果是组件库开发，则可以依据组件划分。
 
-* `subject`: 是commit的简短描述；
+- `subject`: 是commit的简短描述；
 
-* `body`: 提交代码的详细描述；
+- `body`: 提交代码的详细描述；
 
-* `footer`: 如果代码的提交是不兼容变更或关闭缺陷，则footer必需，否则可以省略。
+- `footer`: 如果代码的提交是不兼容变更或关闭缺陷，则footer必需，否则可以省略。
 
 ### 实现
 
@@ -550,26 +549,26 @@ npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"
 
 ```js
 module.exports = {
-    extends: ["@commitlint/config-angular"],
-    // 以下时我们自定义的规则
-    rules: {
-        "type-enum": [
-            2,
-            "always",
-            [
-                "bug", // 此项特别针对bug号，用于向测试反馈bug列表的bug修改情况
-                "feat", // 新功能（feature）
-                "fix", // 修补bug
-                "docs", // 文档（documentation）
-                "style", // 格式（不影响代码运行的变动）
-                "refactor", // 重构（即不是新增功能，也不是修改bug的代码变动）
-                "test", // 增加测试
-                "chore", // 构建过程或辅助工具的变动
-                "revert", // feat(pencil): add ‘graphiteWidth’ option (撤销之前的commit)
-                "merge", // 合并分支， 例如： merge（前端页面）： feature-xxxx修改线程地址
-            ],
-        ],
-    },
+	extends: ["@commitlint/config-angular"],
+	// 以下时我们自定义的规则
+	rules: {
+		"type-enum": [
+			2,
+			"always",
+			[
+				"bug", // 此项特别针对bug号，用于向测试反馈bug列表的bug修改情况
+				"feat", // 新功能（feature）
+				"fix", // 修补bug
+				"docs", // 文档（documentation）
+				"style", // 格式（不影响代码运行的变动）
+				"refactor", // 重构（即不是新增功能，也不是修改bug的代码变动）
+				"test", // 增加测试
+				"chore", // 构建过程或辅助工具的变动
+				"revert", // feat(pencil): add ‘graphiteWidth’ option (撤销之前的commit)
+				"merge", // 合并分支， 例如： merge（前端页面）： feature-xxxx修改线程地址
+			],
+		],
+	},
 };
 ```
 

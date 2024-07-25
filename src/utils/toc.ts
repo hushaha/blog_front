@@ -13,66 +13,66 @@ import { flatArr, throttle } from "./util";
  * @returns 目录树
  */
 export const getTocTree = (val: string): TocTree => {
-  try {
-    const processor = unified().use(markdown, { commonmark: true }).use(toc);
+	try {
+		const processor = unified().use(markdown, { commonmark: true }).use(toc);
 
-    const node = processor.parse(val);
-    const tree = processor.runSync(node);
-    return tree as unknown as TocTree;
-  } catch (error) {
-    return [];
-  }
+		const node = processor.parse(val);
+		const tree = processor.runSync(node);
+		return tree as unknown as TocTree;
+	} catch (error) {
+		return [];
+	}
 };
 
 export const useTocScroll = (tocList: TocTree) => {
-  const [activeKey, setActiveKey] = useState("");
+	const [activeKey, setActiveKey] = useState("");
 
-  const getDomTopList = (tocList: TocTree) => {
-    const flatList = flatArr(tocList, "children");
+	const getDomTopList = (tocList: TocTree) => {
+		const flatList = flatArr(tocList, "children");
 
-    const topList = flatList.reduce((arr, item) => {
-      const el = document.getElementById(item.value.toLocaleLowerCase());
-      if (el) {
-        arr.push({ name: item.value, top: el.offsetTop });
-      }
-      return arr;
-    }, []);
+		const topList = flatList.reduce((arr, item) => {
+			const el = document.getElementById(item.value.toLocaleLowerCase());
+			if (el) {
+				arr.push({ name: item.value, top: el.offsetTop });
+			}
+			return arr;
+		}, []);
 
-    return topList;
-  };
+		return topList;
+	};
 
-  const getFirstActive = (
-    scrollTop: number,
-    topList: { name: string; top: number }[],
-  ) => {
-    return (
-      topList.find((item) => {
-        return item.top > scrollTop;
-      }) || topList[topList.length - 1]
-    ).name;
-  };
+	const getFirstActive = (
+		scrollTop: number,
+		topList: { name: string; top: number }[],
+	) => {
+		return (
+			topList.find((item) => {
+				return item.top > scrollTop;
+			}) || topList[topList.length - 1]
+		).name;
+	};
 
-  useEffect(() => {
-    // 防止卸载后继续触发scroll事件
-    let igore = false;
+	useEffect(() => {
+		// 防止卸载后继续触发scroll事件
+		let igore = false;
 
-    const onScroll = throttle(() => {
-      if (igore) {
-        return;
-      }
+		const onScroll = throttle(() => {
+			if (igore) {
+				return;
+			}
 
-      const topList = getDomTopList(tocList);
+			const topList = getDomTopList(tocList);
 
-      setActiveKey(getFirstActive(window.scrollY, topList));
-    }, 300);
+			setActiveKey(getFirstActive(window.scrollY, topList));
+		}, 300);
 
-    document.addEventListener("scroll", onScroll, true);
+		document.addEventListener("scroll", onScroll, true);
 
-    return () => {
-      igore = true;
-      document.removeEventListener("scroll", onScroll);
-    };
-  }, [tocList]);
+		return () => {
+			igore = true;
+			document.removeEventListener("scroll", onScroll);
+		};
+	}, [tocList]);
 
-  return { activeKey };
+	return { activeKey };
 };

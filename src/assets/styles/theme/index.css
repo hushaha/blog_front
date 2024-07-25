@@ -2,48 +2,48 @@
 @import "./white.css";
 
 @layer base {
-  /* ---------------颜色合集--------------- */
-  .q-color-primary {
-    color: var(--primary-color);
-  }
+	/* ---------------颜色合集--------------- */
+	.q-color-primary {
+		color: var(--primary-color);
+	}
 
-  .q-color-primary-hover:hover {
-    color: var(--primary-color);
-  }
+	.q-color-primary-hover:hover {
+		color: var(--primary-color);
+	}
 
-  .q-bg {
-    background-color: var(--bg-color);
-  }
+	.q-bg {
+		background-color: var(--bg-color);
+	}
 
-  .q-bg-cpt {
-    background-color: var(--bg-color-cpt);
-  }
+	.q-bg-cpt {
+		background-color: var(--bg-color-cpt);
+	}
 
-  .q-secondary {
-    color: var(--text-color-secondary);
-  }
+	.q-secondary {
+		color: var(--text-color-secondary);
+	}
 
-  .q-mask-bg {
-    background-color: var(--mask-bg-color);
-  }
+	.q-mask-bg {
+		background-color: var(--mask-bg-color);
+	}
 
-  .q-info {
-    color: var(--info-color);
-  }
+	.q-info {
+		color: var(--info-color);
+	}
 
-  .q-success {
-    color: var(--success-color);
-  }
+	.q-success {
+		color: var(--success-color);
+	}
 
-  .q-error {
-    color: var(--error-color);
-  }
+	.q-error {
+		color: var(--error-color);
+	}
 
-  .q-warning {
-    color: var(--warning-color);
-  }
+	.q-warning {
+		color: var(--warning-color);
+	}
 
-  .q-border {
-    border: 1px solid var(--border-color);
-  }
+	.q-border {
+		border: 1px solid var(--border-color);
+	}
 }

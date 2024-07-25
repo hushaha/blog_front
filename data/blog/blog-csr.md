@@ -11,10 +11,10 @@ cover: blog-csr.jpg
 
 ## 技术栈
 
-* 使用 `Next+TailwindCSS` 开发前端页面, 
-* 用 `node+mongodb` 作为后台, 基于功能量比较少, 于是选择 `express` 作为服务端框架
-* 使用 `vercel` 进行前端后端静态代码部署
-* 数据库使用 `MongoDB Cloud` 免费存储
+- 使用 `Next+TailwindCSS` 开发前端页面,
+- 用 `node+mongodb` 作为后台, 基于功能量比较少, 于是选择 `express` 作为服务端框架
+- 使用 `vercel` 进行前端后端静态代码部署
+- 数据库使用 `MongoDB Cloud` 免费存储
 
 ### TailwindCSS
 
@@ -130,13 +130,15 @@ baseURL: process.env.NEXT_PUBLIC_API_BASE_PATH
 
 ```js
 module.exports = {
-    // 接口代理
-    async rewrites() {
-        return [{
-            source: "/blog/:path*",
-            destination: `${process.env.NEXT_PUBLIC_API_HOST}/:path*`,
-        }];
-    },
+	// 接口代理
+	async rewrites() {
+		return [
+			{
+				source: "/blog/:path*",
+				destination: `${process.env.NEXT_PUBLIC_API_HOST}/:path*`,
+			},
+		];
+	},
 };
 ```
 
@@ -160,38 +162,38 @@ package.json添加如下命令
 
 ```json
 {
-  "version": 2,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "DELETE,PUT,POST,GET,OPTIONS"
-        }
-      ]
-    }
-  ],
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ]
+	"version": 2,
+	"headers": [
+		{
+			"source": "/(.*)",
+			"headers": [
+				{
+					"key": "Access-Control-Allow-Origin",
+					"value": "*"
+				},
+				{
+					"key": "Access-Control-Allow-Headers",
+					"value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+				},
+				{
+					"key": "Access-Control-Allow-Methods",
+					"value": "DELETE,PUT,POST,GET,OPTIONS"
+				}
+			]
+		}
+	],
+	"builds": [
+		{
+			"src": "index.js",
+			"use": "@vercel/node"
+		}
+	],
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/"
+		}
+	]
 }
 ```
 
