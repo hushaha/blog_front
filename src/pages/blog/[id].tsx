@@ -1,10 +1,10 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import { FC, useMemo } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 
 import { EditorMD, NotFound, SEO, Toc } from "@/components";
 import type { BlogItem } from "@/types";
-import { getImageUrl } from "@/utils";
+import { getImageUrl, http } from "@/utils";
 import sHttp from "@/utils/getStaticData";
 
 type Props = {
@@ -26,6 +26,25 @@ export const getStaticProps: GetStaticProps<{
 const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
 	moHiddenLayout: boolean;
 } = ({ detail }) => {
+	const [config, setConfig] = useState<{
+		count: number;
+	}>({
+		count: 0,
+	});
+
+	useEffect(() => {
+		const getConfig = async () => {
+			if (!detail?.id) {
+				return false;
+			}
+			const res = await http.getVisit({
+				blogId: detail.id,
+			});
+			setConfig({ count: res.data.count });
+		};
+		getConfig();
+	}, [detail?.id]);
+
 	const coverImg = useMemo(
 		() => (detail?.cover ? getImageUrl(detail.cover, "cover") : ""),
 		[detail?.cover],
@@ -45,18 +64,21 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
 					<h1 className="text-3xl font-extrabold leading-9 tracking-tight">
 						{detail?.title}
 					</h1>
-					<div className="mt-8 flex flex-wrap items-center gap-4 text-sm">
-						<span>{detail?.authors}</span>
-						<span>{detail?.createTime}</span>
-						{detail?.tag && (
-							<span className="flex flex-wrap gap-2">
-								{detail.tag.split(",").map((itm) => (
-									<Link key={itm} href={`/tags/${itm}`} passHref>
-										<a className="q-tag">{itm}</a>
-									</Link>
-								))}
-							</span>
-						)}
+					<div className="q-secondary mt-8 flex flex-wrap items-center divide-x text-sm">
+						<span className="pr-2">{detail?.authors}</span>
+						<span className="px-2">{detail?.createTime}</span>
+						<span className="px-2">访问量: {config.count}</span>
+						<span className="pl-2">
+							{detail?.tag && (
+								<span className="flex flex-wrap gap-2">
+									{detail.tag.split(",").map((itm) => (
+										<Link key={itm} href={`/tags/${itm}`} passHref>
+											<a className="q-tag">{itm}</a>
+										</Link>
+									))}
+								</span>
+							)}
+						</span>
 					</div>
 				</div>
 				{!!coverImg && (

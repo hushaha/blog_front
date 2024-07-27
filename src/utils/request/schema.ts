@@ -43,6 +43,15 @@ export interface APISchemas extends APISchemaType {
 			name: string;
 		};
 	};
+	getVisit: {
+		request: {
+			blogId: string;
+		};
+		response: {
+			blogId: string;
+			count: number;
+		};
+	};
 }
 
 export const apis: ApiType<APISchemas> = {
@@ -60,5 +69,8 @@ export const apis: ApiType<APISchemas> = {
 	},
 	addBlog: {
 		path: "POST blog/add",
+	},
+	getVisit: {
+		path: "POST visit/get",
 	},
 };
