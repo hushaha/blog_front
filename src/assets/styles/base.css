@@ -4,7 +4,7 @@
 @layer base {
 	html,
 	body {
-		@apply min-h-screen font-sans tracking-wider;
+		@apply min-h-screen font-sans tracking-wider caret-transparent;
 		background-color: var(--bg-color);
 		color: var(--text-color-main);
 

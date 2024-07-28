@@ -24,10 +24,10 @@ const Links: FC<Props> = ({ onClick = () => {} }) => {
 					标签
 				</a>
 			</Link>
-			<Link href="/my">
+			<Link href="/about">
 				<a
 					className="q-color-primary-hover mx-4 font-bold"
-					onClick={() => onClick("tags")}
+					onClick={() => onClick("about")}
 				>
 					关于
 				</a>

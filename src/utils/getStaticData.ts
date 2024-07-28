@@ -33,7 +33,7 @@ class StaticData {
 		return fs.readdirSync(this.getFolderPath(folder), "utf-8");
 	}
 
-	private getFileByName(folder = "blog", name: string) {
+	getFileByName(folder = "blog", name: string) {
 		return fs.readFileSync(
 			path.join(this.getFolderPath(folder), name),
 			"utf-8",

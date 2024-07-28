@@ -15,7 +15,7 @@ const Footer = () => {
 	};
 
 	return (
-		<footer className="mx-auto mt-8 w-full px-6 sm:mt-16">
+		<footer className="mx-auto w-full px-6">
 			<div className="q-secondary container mx-auto flex flex-col items-center justify-between gap-1 border-t py-6 sm:flex-row">
 				<Logo style={{ transform: "scale(0.7)" }} />
 				<p className="text-xs leading-5">
