@@ -135,7 +135,7 @@ status.value = {
 loading.value = false;
 ```
 
-### defineProperty & proxy 代理
+### defineProperty-proxy代理
 
 为什么上述的 `ref` 和 `reactive` 方法的返回值就是个响应式变量, 先来认识一下proxy
 

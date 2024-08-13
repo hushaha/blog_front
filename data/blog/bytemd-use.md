@@ -26,13 +26,13 @@ ByteMD 是一个使用 Svelte 构建的 Markdown 编辑器组件. 它也可以�
 
 ## 基本使用
 
-#### 安装
+### 安装
 
 ```bash
 pnpm add bytemd
 ```
 
-#### 用法
+### 用法
 
 bytemd有两个组件: `Editor` 和 `Viewer` .
 `Editor` 顾名思义，是 Markdown 编辑器; `Viewer` 通常用于显示渲染的 Markdown 结果而无需编辑.
@@ -42,7 +42,7 @@ bytemd有两个组件: `Editor` 和 `Viewer` .
 import "bytemd/dist/index.css";
 ```
 
-#### 使用示例
+### 使用示例
 
 ```tsx
 import { Editor, Viewer } from "@bytemd/react";
@@ -85,7 +85,7 @@ const EditorMD:FC<Props> = ({ onlyRead, defaultValue, onChange }) => {
 }
 ```
 
-#### 风格定制
+### 风格定制
 
 **编辑器**
 
@@ -109,7 +109,7 @@ import "highlight.js/styles/atom-one-dark.min.css";
 
 ## 插件配置
 
-#### 安装插件
+### 安装插件
 
 官方插件列表如下:
 
@@ -126,7 +126,7 @@ import "highlight.js/styles/atom-one-dark.min.css";
 | [@bytemd/plugin-medium-zoom](https://github.com/bytedance/bytemd/tree/main/packages/plugin-medium-zoom)     | 支持点击图片放大预览                                                 |
 | [@bytemd/plugin-mermaid](https://github.com/bytedance/bytemd/tree/main/packages/plugin-mermaid)             | 支持流程图                                                           |
 
-#### 自定义插件
+### 自定义插件
 
 **官方文档提示如下:**
 
@@ -149,7 +149,7 @@ ByteMD 使用 [remark](https://github.com/remarkjs/remark) 和 [rehype](https://
 
 这里我再补充几个插件:
 
-##### 添加锚点插件
+#### 添加锚点插件
 
 需要给md加上目录，且支持锚点跳转，因此需要做两件事情
 
@@ -158,7 +158,7 @@ ByteMD 使用 [remark](https://github.com/remarkjs/remark) 和 [rehype](https://
 
 因为bytemd底层用的是remark、rehype，因此查找rehype插件，这里用到的是[ `rehype-slug` ](https://github.com/rehypejs/rehype-slug)插件, 该插件能获取到所有标题标签并为其添加id
 
-**代码如下: **
+**代码如下:**
 
 ```ts
 import type { BytemdPlugin } from "bytemd";
@@ -192,7 +192,7 @@ const getTocTree = (val: string): TocTree => {
 
 `getTocTree` 方法会返回一个tree-list, 包含的就是目录数据, 根据这个数据自定义渲染目录即可.
 
-##### 添加copy按钮插件
+#### 添加copy按钮插件
 
 bytemd默认渲染的出来的就是最简单的html，代码块是解析成 `pre > code` 标签, 因此是不带任何额外功能的，我们希望在代码块的右上角有个copy按钮.
 
@@ -233,7 +233,7 @@ const codeCopyPlugin = (): BytemdPlugin => {
 };
 ```
 
-##### 添加代码块行号插件
+#### 添加代码块行号插件
 
 希望给代码块添加行号功能，找到[ `rehype-highlight-code-lines` ](https://github.com/ipikuka/rehype-highlight-code-lines)
 
@@ -257,7 +257,7 @@ const highlightCodeLinesPlugin = (): BytemdPlugin => {
 };
 ```
 
-##### 插件使用
+#### 插件使用
 
 基于上方使用示例中plugins为空数组，使用插件时补充到该数组中即可
 
@@ -286,7 +286,7 @@ const plugins = [
 ];
 ```
 
-#### Tips
+### Tips
 
 1. 目录中包含特殊字符可能导致锚点跳转失效  
    这里使用的是 `rehype-slug` 给标题添加id, id源于标签内容, 但是id中不能包含特殊字符, 因此需要将特殊字符替换为另一个关键字, 因此最好避免在标题中使用特殊字符
