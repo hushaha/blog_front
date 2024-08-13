@@ -16,6 +16,7 @@ const LoopTocTree: FC<{ treeList: TocTree }> = ({ treeList }) => {
 	const activeClassName = "q-color-primary";
 
 	const defaultClassName = "q-secondary";
+
 	return (
 		<div className="ml-2 text-sm">
 			{treeList.map((item, idx) => (

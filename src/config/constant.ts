@@ -10,4 +10,5 @@ export const BASE_CONFIG = {
 	github: "https://github.com/quechenping",
 	juejin: "https://juejin.cn/user/3544481221064318",
 	copyright: "©copyright 2021-2024",
+	motto: "stay hungry stay foolish",
 };

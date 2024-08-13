@@ -42,7 +42,12 @@ type EditorProps = {
 };
 
 const EditorMD = (
-	{ onlyRead = false, value: defaultValue, className, onChange }: EditorProps,
+	{
+		onlyRead = false,
+		value: defaultValue,
+		className = "",
+		onChange,
+	}: EditorProps,
 	ref: Ref<unknown>,
 ) => {
 	const [value, setValue] = useState(() => defaultValue || "");

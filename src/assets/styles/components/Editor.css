@@ -17,23 +17,25 @@
 			@apply mt-0;
 		}
 
+		.markdown-body > *:last-child {
+			@apply mb-0;
+		}
+
 		.markdown-body {
 			word-break: break-word;
 			line-height: 1.75;
 			font-weight: 400;
 			font-size: 16px;
 			overflow-x: hidden;
-			color: #333;
+			color: var(--text-color-main);
 		}
 
 		.markdown-body .numbered-code-line::before {
 			content: attr(data-line-number);
-
 			margin-right: 16px;
 			width: 1rem;
-			color: #333;
+			color: var(--text-color-secondary);
 			text-align: right;
-
 			display: inline-block;
 		}
 
@@ -53,7 +55,7 @@
 		.markdown-body h1 {
 			font-size: 24px;
 			padding-bottom: 12px;
-			border-bottom: 1px solid #ececec;
+			border-bottom: 1px solid var(--border-color);
 		}
 
 		.markdown-body h2,
@@ -66,7 +68,7 @@
 
 		.markdown-body h2 {
 			padding-bottom: 12px;
-			border-bottom: 1px solid #ececec;
+			border-bottom: 1px solid var(--border-color);
 		}
 
 		.markdown-body h3 {
@@ -85,11 +87,12 @@
 		}
 
 		.markdown-body img {
+			@apply m-auto rounded-lg;
 			max-width: 100%;
 		}
 
 		.markdown-body hr {
-			border-top: 1px solid #ddd;
+			border-top: 1px solid var(--border-color);
 			border-bottom: none;
 			border-left: none;
 			border-right: none;
@@ -98,63 +101,55 @@
 		}
 
 		.markdown-body code {
-			font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 			word-break: break-word;
 			border-radius: 2px;
 			overflow-x: auto;
-			background-color: #fff5f5;
-			color: #ff502c;
+			background: var(--code-bg-color);
+			color: var(--code-color);
 			font-size: 0.87em;
 			padding: 0.065em 0.4em;
 		}
 
 		.markdown-body pre {
-			font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 			overflow: auto;
 			position: relative;
 			line-height: 1.75;
 		}
 
-		.markdown-body pre > code.hljs {
+		.markdown-body pre > code {
+			@apply rounded;
 			font-size: 12px;
 			padding: 15px 12px;
 			margin: 0;
 			word-break: normal;
 			display: block;
 			overflow-x: auto;
-			color: #333;
-			background: #f8f8f8;
+			color: var(--text-color-main);
+			background: var(--code-bg-color);
 			padding-right: 1.5em;
-			border-radius: 0.2em;
 		}
 
 		.markdown-body a {
-			text-decoration: none;
-			color: #0269c8;
-			border-bottom: 1px solid #d1e9ff;
-		}
-
-		.markdown-body a:hover,
-		.markdown-body a:active {
-			color: #275b8c;
+			color: var(--primary-color);
+			@apply truncate leading-6 hover:underline;
 		}
 
 		.markdown-body table {
 			font-size: 13px;
 			overflow: auto;
-			border: solid 1px #f6f6f6;
+			border: solid 1px var(--border-color);
 			width: 100%;
 			table-layout: auto;
 		}
 
 		.markdown-body thead {
-			background: #f6f6f6;
-			color: #000;
+			background: var(--code-bg-color);
+			color: var(--text-color-main);
 			text-align: left;
 		}
 
 		.markdown-body tr:nth-child(2n) {
-			background-color: #fcfcfc;
+			background: var(--code-bg-color);
 		}
 
 		.markdown-body th,
@@ -168,11 +163,13 @@
 		}
 
 		.markdown-body blockquote {
-			color: #666;
+			@apply rounded;
+
+			color: var(--text-color-secondary);
 			padding: 1px 23px;
 			margin: 22px 0;
-			border-left: 4px solid #cbcbcb;
-			background-color: #f8f8f8;
+			border-left: 4px solid var(--border-color);
+			background: var(--code-bg-color);
 		}
 
 		.markdown-body blockquote::after {
@@ -182,6 +179,7 @@
 
 		.markdown-body blockquote > p {
 			margin: 10px 0;
+			font-size: 14px;
 		}
 
 		.markdown-body ol {
@@ -210,11 +208,15 @@
 
 		.markdown-body ul,
 		.markdown-body ol {
-			margin-top: 3px;
+			margin: 22px 0;
 		}
 
 		.markdown-body ol li {
 			padding-left: 6px;
+		}
+
+		.markdown-body ol li::marker {
+			font-weight: bold;
 		}
 
 		.contains-task-list {

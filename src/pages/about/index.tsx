@@ -17,7 +17,7 @@ const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 	return (
 		<>
 			<SEO title="关于我" />
-			<div className="q-card mx-auto h-full max-w-4xl divide-y">
+			<div className="q-card mx-auto h-full max-w-4xl divide-y pb-1">
 				<EditorMD onlyRead value={detail} />
 			</div>
 		</>

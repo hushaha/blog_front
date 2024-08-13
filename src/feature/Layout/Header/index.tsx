@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-import Logo from "@/assets/imgs/logo.svg";
+import { Logo } from "@/components";
 
 import HomeSide from "./HomeSide";
 import Links from "./Links";

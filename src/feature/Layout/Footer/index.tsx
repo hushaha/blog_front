@@ -1,5 +1,4 @@
-import Logo from "@/assets/imgs/logo.svg";
-import { message } from "@/components";
+import { Logo, message } from "@/components";
 import { BASE_CONFIG } from "@/config";
 import { copyToClipboard } from "@/utils";
 

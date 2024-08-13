@@ -3,6 +3,6 @@
 @layer components {
 	.q-card {
 		@apply rounded-lg p-6 shadow-md sm:px-10;
-		background-color: var(--bg-color-cpt);
+		background: var(--bg-color-cpt);
 	}
 }

@@ -1,12 +1,11 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Link from "next/link";
 import { FC, useState } from "react";
 
 import { SEO } from "@/components";
 import BlogList from "@/feature/BlogList";
 import type { BlogItem, TagItem } from "@/types";
 import sHttp from "@/utils/getStaticData";
-
-import SideBar from "./components/SideBar";
 
 export const getStaticProps: GetStaticProps<{
 	blogList: BlogItem[];
@@ -45,7 +44,21 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 				<BlogList title="Post" list={curList} onSearch={onSearch} />
 			</div>
 			<div className="sticky top-6 hidden h-fit w-80 shrink-0 lg:block">
-				<SideBar tagList={tagList} />
+				<div className="mt-3 text-xl font-bold">Tags</div>
+				<div className="q-card mt-8" style={{ padding: "1.5rem" }}>
+					<div className="max-h-64 overflow-y-auto">
+						{tagList.map((tag, idx) => (
+							<Link key={idx} href={`/tags/${tag.name}`} passHref>
+								<a className="q-color-primary-hover mx-1 my-2 flex justify-between font-bold hover:underline">
+									<span>- {tag.name}</span>
+									<span className="text-sm font-light">
+										Created {tag.count} Posts
+									</span>
+								</a>
+							</Link>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	);

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FC, useEffect, useMemo, useState } from "react";
 
 import { EditorMD, NotFound, SEO, Toc } from "@/components";
+import { BASE_CONFIG } from "@/config";
 import type { BlogItem } from "@/types";
 import { getImageUrl, http } from "@/utils";
 import sHttp from "@/utils/getStaticData";
@@ -53,7 +54,7 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
 	return !detail ? (
 		<NotFound />
 	) : (
-		<div className="flex justify-center gap-10">
+		<div className="flex select-text justify-center gap-10">
 			<SEO
 				title={detail?.title}
 				keywords={detail?.tag}
@@ -92,7 +93,25 @@ const Blog: FC<InferGetStaticPropsType<typeof getStaticProps>> & {
 				<EditorMD onlyRead value={detail?.content} className="mt-12" />
 			</div>
 			<div className="sticky top-6 hidden h-fit w-80 shrink-0 lg:block">
-				<div className="q-card">
+				<div className="q-card pr-2">
+					<div className="flex items-center gap-4">
+						<img
+							src="/config/avatar.gif"
+							alt="avatar"
+							draggable={false}
+							className="q-img avatar-img w-12 cursor-pointer rounded-full"
+						/>
+						<div>
+							<Link href="/about" passHref>
+								<a className="q-color-primary-hover hover:underline">
+									{detail?.authors}
+								</a>
+							</Link>
+							<div className="q-secondary text-sm">{BASE_CONFIG.motto}</div>
+						</div>
+					</div>
+				</div>
+				<div className="q-card mt-4">
 					<div className="border-b pb-2 font-bold">目录</div>
 					<Toc
 						value={detail?.content}

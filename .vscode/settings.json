@@ -1,7 +1,12 @@
 // .vscode/settings.json
 {
-  "css.customData": [".vscode/tailwindcss.json"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  }
+	"css.customData": [
+		".vscode/tailwindcss.json"
+	],
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "mervin.markdown-formatter"
+	}
 }
