@@ -138,7 +138,7 @@ pnpm create vite
 
 到根目录执行如下命令:
 
-```
+```bash
 pnpm add typescript -D -w
 ```
 
