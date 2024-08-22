@@ -1,3 +1,5 @@
+export type Theme = "light" | "dark" | "";
+
 export interface BlogItem {
 	title: string;
 	id: string;

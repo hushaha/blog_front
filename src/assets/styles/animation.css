@@ -32,3 +32,13 @@
 .animation-HideToUp {
 	animation: HideToUp 0.3s ease;
 }
+
+::view-transition-new(root),
+::view-transition-old(root) {
+	/* 关闭默认动画，否则影响自定义动画的执行 */
+	animation: none;
+}
+
+[data-theme="dark"]::view-transition-old(root) {
+	z-index: 9999;
+}

@@ -1,0 +1,32 @@
+[data-theme="dark"] {
+	/* 背景色 */
+	--bg-color: #1e1e1e;
+	/* 主色，用于强调按钮、链接等 */
+	--primary-color: #c7a3ff;
+	/* 文字主色，用于主要内容文字 */
+	--text-color-main: #e0e0e0;
+	/* 文字辅助色，用于次要信息或辅助文字 */
+	--text-color-secondary: #b3b3b3;
+	/* 边框色，用于边框、分割线等 */
+	--border-color: #626262;
+	/* 组件背景色，用于按钮、卡片等组件背景 */
+	--bg-color-cpt: #333333;
+	/* 遮罩背景色，用于遮罩层、弹出层等 */
+	--mask-bg-color: rgba(30, 30, 30, 0.8);
+	/* code-tag颜色，用于代码标签 */
+	--code-color: #e06c75;
+	/* code块背景颜色，用于代码块背景 */
+	--code-bg-color: #0d1117;
+
+	/* info */
+	--info-color: #2196f3;
+	/* success */
+	--success-color: #4caf50; /* 保持与亮色主题一致 */
+	/* warning */
+	--warning-color: #fbc02d; /* 保持与亮色主题一致 */
+	/* error */
+	--error-color: #d32f2f; /* 保持与亮色主题一致 */
+
+	/* scrollbar */
+	--scrollbar-color: #808080;
+}

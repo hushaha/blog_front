@@ -6,7 +6,11 @@
 	body {
 		@apply min-h-screen select-none font-sans tracking-wider caret-transparent;
 		background-color: var(--bg-color);
-		color: var(--text-color-main);
+
+		* {
+			border-color: var(--border-color);
+			color: var(--text-color-main);
+		}
 
 		::-webkit-scrollbar {
 			width: 8px;

@@ -1,5 +1,4 @@
 import "bytemd/dist/index.min.css";
-import "highlight.js/styles/atom-one-dark.min.css";
 
 import gemoji from "@bytemd/plugin-gemoji";
 import gfm from "@bytemd/plugin-gfm";

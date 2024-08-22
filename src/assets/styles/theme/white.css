@@ -1,4 +1,4 @@
-:root {
+[data-theme="light"] {
 	/* 背景色 */
 	--bg-color: rgb(243 244 246);
 	/* 主色 */
@@ -13,6 +13,10 @@
 	--bg-color-cpt: #fff;
 	/* 遮罩背景色 */
 	--mask-bg-color: rgba(0, 0, 0, 0.5);
+	/* code-tag颜色 */
+	--code-color: #ff502c;
+	/* code块背景颜色 */
+	--code-bg-color: #f8f8f8;
 
 	/* info */
 	--info-color: #2196f3;

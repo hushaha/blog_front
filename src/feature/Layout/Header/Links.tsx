@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { FC } from "react";
 
+import { ThemeChange } from "@/components";
+
 interface Props {
 	onClick?: (type?: string) => void;
 }
 
 const Links: FC<Props> = ({ onClick = () => {} }) => {
 	return (
-		<>
+		<div className="flex items-center">
 			<Link href="/blog">
 				<a
 					className="q-color-primary-hover mx-4 font-bold"
@@ -32,7 +34,10 @@ const Links: FC<Props> = ({ onClick = () => {} }) => {
 					关于
 				</a>
 			</Link>
-		</>
+			<a className="q-color-primary-hover mx-4 flex items-center">
+				<ThemeChange />
+			</a>
+		</div>
 	);
 };
 
