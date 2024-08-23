@@ -4,6 +4,7 @@ createTime: 2024-06-04
 updateTime: 2024-06-04
 authors: hush
 tag: js
+cover: race-condition.jpg
 ---
 
 ## 什么是竞态
