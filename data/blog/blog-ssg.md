@@ -105,8 +105,8 @@ fallback 有 3 个值
 
 [博客地址](https://blog.hushaha.top)
 
-[前端git仓库地址](https://github.com/quechenping/blog_front)
+[前端git仓库地址](https://github.com/hushaha/blog_front)
 
-[后端git仓库地址](https://github.com/quechenping/blog_backend)
+[后端git仓库地址](https://github.com/hushaha/blog_backend)
 
 [bytemd使用](/blog/bytemd-use)

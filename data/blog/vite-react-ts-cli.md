@@ -577,4 +577,4 @@ module.exports = {
 
 ## 参考
 
-git仓库地址: https://github.com/quechenping/vite-react-cli/tree/master
+[git仓库地址](https://github.com/hushaha/vite-react-cli/tree/master)

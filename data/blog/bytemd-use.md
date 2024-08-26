@@ -295,7 +295,7 @@ const plugins = [
 
 [官方文档](https://bytemd.js.org/#options)
 
-[示例代码](https://github.com/quechenping/blog_front/blob/master/src/components/EditorMD/index.tsx)
+[示例代码](https://github.com/hushaha/blog_front/blob/master/src/components/EditorMD/index.tsx)
 
 [博客地址](https://blog.hushaha.top)
 
