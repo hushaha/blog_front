@@ -1,5 +1,5 @@
 ---
-title: 自定义脚手架开发pt1
+title: 自定义脚手架开发
 createTime: 2024-08-23
 updateTime: 2024-08-23
 authors: hush
@@ -336,16 +336,16 @@ function copy(src: string, dest: string) {
 效果如下:
 
 1. 输入项目名
-![](/images/custom-vite-cli/vite-cli-5.png)
+   ![](/images/custom-vite-cli/vite-cli-5.png)
 
 2. 选择技术栈
-![](/images/custom-vite-cli/vite-cli-6.png)
+   ![](/images/custom-vite-cli/vite-cli-6.png)
 
 3. 选择仓库类型
-![](/images/custom-vite-cli/vite-cli-7.png)
+   ![](/images/custom-vite-cli/vite-cli-7.png)
 
 4. 选择依赖
-![](/images/custom-vite-cli/vite-cli-8.png)
+   ![](/images/custom-vite-cli/vite-cli-8.png)
 
 完成后会在 `playground/hush-cli` 下生成一个 `hush-project` 文件夹, 里边有 `index.ts` 文件
 
@@ -355,12 +355,64 @@ function copy(src: string, dest: string) {
 
 ### 修改项目模板配置信息
 
-接下来我们需要完善 `templates` 下的脚手架仓库, 这里留到下篇继续讲解
+修改 `package.json` 中的项目名:
+
+```ts
+const targetPath = path.join(root);
+const pkgPath = path.join(targetPath, `package.json`);
+const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
+
+pkg.name = result.packageName || result.projectName;
+
+fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
+```
+
+接下来我们需要完善 `templates` 下的脚手架仓库
+
+这里拿react脚手架做示例, 我们需要预安装如下插件:
+
+| 插件名称         | 作用                |
+| ---------------- | ------------------- |
+| initialize-css   | 样式初始化          |
+| mobx             | 状态管理            |
+| tailwindcss      | 样式框架            |
+| eslint           | 代码校验工具        |
+| prettier         | 代码格式化工具      |
+| lint-staged      | 暂存区代码处理工具  |
+| husky            | git hook 工具       |
+| commitlint       | git提交命令校验工具 |
+| @hushaha/request | 请求工具            |
+
+因此我们需要依次安装此些插件
+
+代码目录结构如下:
+
+```bash
+|-- src
+    |-- assets  	# 样式以及图片
+    |-- components  # 基础组件
+    |-- config      # 公共配置
+    |-- features    # 业务组件
+    |-- pages       # 路由对应页面
+    |-- routers   	# 路由配置
+    |-- stores      # 全局状态
+    |-- types       # types
+    |-- utils       # 工具库
+    |-- App.tsx		# 主组件
+    |-- main.tsx	# 入口文件
+```
+
+`@hushaha/request` 库的使用方法可以查看这篇文章:
+[q-request](https://blog.hushaha.top/blog/q-request)
 
 ## 链接
+
+[create-hush-cli](https://github.com/hushaha/hush-cli.git)
 
 [vite-git仓库](https://github.com/vitejs/vite.git)
 
 [prompts官网](https://chinabigpan.github.io/prompts_docs_cn/)
 
 [博客地址](https://blog.hushaha.top)
+
+[q-request](https://blog.hushaha.top/blog/q-request)
