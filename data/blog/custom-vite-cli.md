@@ -402,6 +402,9 @@ fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
     |-- main.tsx	# 入口文件
 ```
 
+脚手架创建的具体流程可以查看这篇文章:
+[vite-react-ts-cli](https://blog.hushaha.top/blog/vite-react-ts-cli)
+
 `@hushaha/request` 库的使用方法可以查看这篇文章:
 [q-request](https://blog.hushaha.top/blog/q-request)
 

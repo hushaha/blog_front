@@ -7,7 +7,7 @@ const THEME_CODE = "data-theme";
 const getDefaultTheme = (): Theme => {
 	try {
 		return (
-			(window.localStorage.getItem(THEME_CODE) as Theme) ||
+			(window.sessionStorage.getItem(THEME_CODE) as Theme) ||
 			(window.matchMedia("(prefers-color-scheme: dark)").matches
 				? "dark"
 				: "light")
@@ -23,16 +23,18 @@ export const useTheme = () => {
 	const setThemeType = (theme: Theme) => {
 		setTheme(theme);
 		document.documentElement.setAttribute(THEME_CODE, theme);
-		window.localStorage.setItem(THEME_CODE, theme);
+		window.sessionStorage.setItem(THEME_CODE, theme);
 	};
 
 	const setThemeWrap = (newTheme: Theme) => {
 		// 动画切换
+		// @ts-ignore
 		if (!document.startViewTransition) {
 			setThemeType(newTheme);
 			return false;
 		}
 
+		// @ts-ignore
 		const transition = document.startViewTransition(() => {
 			setThemeType(newTheme);
 		});
