@@ -34,9 +34,9 @@ const Links: FC<Props> = ({ onClick = () => {} }) => {
 					关于
 				</a>
 			</Link>
-			<a className="q-color-primary-hover mx-4 flex items-center">
+			<span className="q-color-primary-hover mx-4 flex items-center">
 				<ThemeChange />
-			</a>
+			</span>
 		</div>
 	);
 };

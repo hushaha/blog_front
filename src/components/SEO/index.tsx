@@ -11,8 +11,8 @@ const SEO: FC<Props> = ({ title, keywords, description }) => {
 	return (
 		<Head>
 			<title>{title}</title>
-			<meta name="keywords" content={keywords} />
-			<meta name="description" content={description} />
+			{keywords && <meta name="keywords" content={keywords} />}
+			{description && <meta name="description" content={description} />}
 		</Head>
 	);
 };
