@@ -5,6 +5,8 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withBundleAnalyzer({
 	// react严格模式
 	reactStrictMode: true,
+	swcMinify: true,
+  	output: 'standalone', // 添加此行以支持Docker部署
 
 	// eslint
 	eslint: {
